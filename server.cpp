@@ -30,25 +30,40 @@ int main (int argc, char * const argv[]) {
 	
 	struct sockaddr_in  cln;
 	socklen_t sLen=sizeof(cln);
-	int tmp = -1; 
-	tmp=accept(ServerSocket,(struct sockaddr *)& cln,&sLen);
-	if(tmp==-1){
-		cerr<<"Accept Error!!\n";
+	while (1) {
+		
+		
+		int tmp = -1; 
+		tmp=accept(ServerSocket,(struct sockaddr *)& cln,&sLen);
+		if(tmp==-1){
+			cerr<<"Accept Error!!\n";
+		}
+		
+		int cpid = fork();
+		
+		if (cpid>0) {
+			close(tmp);
+			continue;
+		}
+		else {
+			
+
+			dup2(tmp, 0);
+			dup2(tmp, 1);
+			dup2(tmp, 2);
+			
+			close(tmp);
+			char command[] = "./mysh";
+			
+			char * args[2] = { command, 0};
+			
+			//cout << "prepare to exec...\n";
+			cout.flush();
+			execvp(command, args);
+			
+			//cout << "exec failed!\n";
+		}
 	}
-	dup2(tmp, 0);
-//	dup2(tmp, 1);
-//	dup2(tmp, 2);
-	
-//	close(tmp);
-	char command[] = "bash";
-	
-	char * args[2] = { command, 0};
-	
-	cout << "prepare to exec...\n";
-	cout.flush();
-	execvp(command, args);
-	
-	cout << "exec failed!\n";
 	string s;
 	while (cin >> s) {
 		if (s == "exit") {
