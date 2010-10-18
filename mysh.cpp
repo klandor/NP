@@ -9,14 +9,18 @@
 #include <iostream>
 #include <stdio.h>
 #include <sstream>
+#include <fstream>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/wait.h>
+#include <errno.h>
+#include <string.h>
 #include <vector>
 #include <map>
 using namespace std;
 
 
-#define MAX_PIPE 1000
+#define MAX_PIPE 1200
 
 
 map<int, int> pipes;
@@ -60,10 +64,6 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 			cout << arglist[1] << '=' << s << endl;
 		}
 		else {
-			//char* buff = new char[strlen(arglist[1]) +s.size()+2];
-			//strcpy(buff, arglist[1]);
-//			strcpy(buff+strlen(arglist[1]), "=");
-//			strcpy(buff+strlen(arglist[1])+1, s.c_str());
 			
 			write(write_fd, arglist[1].c_str(), arglist[1].size());
 			write(write_fd, "=", 1);
@@ -111,7 +111,8 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 			close( i->second);
 		
 		execvp(args[0], args);
-		cerr << args[0]<<": command not found!"<<endl;
+		cerr <<"Unknown Command: "<< args[0] << endl;
+		//cerr << "errno: " << errno << endl; 
 		exit(-1);
 	}
 	
@@ -122,26 +123,24 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 
 int main() { 
 	
+	ifstream wel;
+	wel.open("welcome_message.txt");
+	
+	string line;
+	while (getline(wel, line, '\n')){
+		cout << line << endl;
+	}
+	
 	int cmdNO = 0;
 	chdir("ras/");
 	int r = setenv("PATH", "bin:.", 1);
 	if( r < 0)
 		cerr << "setenv FAIL!\n";
 	
-//	string ls = "ls";
-//	char command[50] = ls.c_str();
-//	
-//	char * args[2] = { command, 0};
-//	
-//	cout << "prepare to exec...\n";
-//	cout.flush();
-//	int execre = execvp(command, args);
-//	cout << "exec fail!!\n";
-	
 	cout << "% ";
 	cout.flush();
 	
-	string line;
+//	string line;
 	while (getline(cin, line, '\n')) {
 		istringstream iss(line);
 		string s;
@@ -217,8 +216,8 @@ int main() {
 			
 		}
 		
-		cout << "% ";
-		cout.flush();
+//		cout << "% ";
+//		cout.flush();
 		
 		
 	}

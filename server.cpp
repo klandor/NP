@@ -2,6 +2,7 @@
 #include <sys/socket.h>
 #include<netinet/in.h>
 #include <unistd.h>
+#include <string.h>
 using namespace std;
 int main (int argc, char * const argv[]) {
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -11,7 +12,7 @@ int main (int argc, char * const argv[]) {
 
 	struct sockaddr_in ServerAddress;
 	ServerAddress.sin_family = AF_INET;
-	ServerAddress.sin_port = htons(3000);
+	ServerAddress.sin_port = htons(56523);
 	ServerAddress.sin_addr.s_addr = INADDR_ANY;
 	memset(&ServerAddress.sin_zero, 0, sizeof ServerAddress.sin_zero);
 	const int on=1;
@@ -53,6 +54,7 @@ int main (int argc, char * const argv[]) {
 			dup2(tmp, 2);
 			
 			close(tmp);
+			close(ServerSocket);
 			char command[] = "./mysh";
 			
 			char * args[2] = { command, 0};
@@ -64,13 +66,13 @@ int main (int argc, char * const argv[]) {
 			//cout << "exec failed!\n";
 		}
 	}
-	string s;
-	while (cin >> s) {
-		if (s == "exit") {
-			break;
-		}
-		cout << s << '\n';
-	}
+//	string s;
+//	while (cin >> s) {
+//		if (s == "exit") {
+//			break;
+//		}
+//		cout << s << '\n';
+//	}
 	
 	
 	

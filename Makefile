@@ -1,12 +1,16 @@
 all: server mysh client
 
 server:
-	g++ server.cpp -o $@
+	g++ -g server.cpp -o $@
 	
 mysh:
-	g++ mysh.cpp -o $@
+	g++ -g mysh.cpp -o $@
 	
 client:
-	g++ -o client client.c
+	g++ -g -o client client.c
+	g++ -o ras/bin/noop noop.cpp
+	g++ -o ras/bin/number number.cpp
+	g++ -o ras/bin/removetag removetag.cpp
+	cp /bin/ls /bin/cat ras/bin/
 	
 .PHONY: server mysh client
