@@ -132,13 +132,15 @@ int main() {
 	}
 	
 	int cmdNO = 0;
-	chdir("ras/");
+	if(chdir("ras/")<0)
+		perror("chdir");
+	
 	int r = setenv("PATH", "bin:.", 1);
 	if( r < 0)
 		cerr << "setenv FAIL!\n";
 	
-	cout << "% ";
-	cout.flush();
+//	cout << "% ";
+//	cout.flush();
 	
 //	string line;
 	while (getline(cin, line, '\n')) {
