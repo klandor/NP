@@ -5,6 +5,9 @@
 #include <string.h>
 using namespace std;
 int main (int argc, char * const argv[]) {
+	signal(SIGCHLD, SIG_IGN);
+	
+	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ServerSocket <0) {
 		cerr << "can't not open socket\n";
