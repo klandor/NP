@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <signal.h>
 #include <errno.h>
 #include <string.h>
 #include <vector>
@@ -122,6 +123,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 }
 
 int main() { 
+	signal(SIGCHLD, SIG_DFL);
 	
 	ifstream wel;
 	wel.open("welcome_message.txt");
