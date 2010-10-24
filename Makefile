@@ -7,6 +7,8 @@ mysh:
 	g++ -g mysh.cpp -o $@
 	
 client:
+	rm -Rf ras
+	cp -r ras-default ras
 	g++ -g -o client client.c
 	g++ -o ras/bin/noop noop.cpp
 	g++ -o ras/bin/number number.cpp
