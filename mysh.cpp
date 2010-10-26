@@ -39,7 +39,7 @@ void clearpipe(int cmdNO){
 
 int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	int cmdNO = new_cmdNO;
-	
+	write(3, "*", 1);
 	// new_cmdNO advances for 1
 	new_cmdNO++;
 	new_cmdNO %= MAX_PIPE;
@@ -49,6 +49,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	
 	// special commands
 	if (arglist[0] == "exit") {
+		write(3, " client exit\n", 13);
 		exit(0);
 	}
 	

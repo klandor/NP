@@ -7,6 +7,7 @@
 using namespace std;
 int main (int argc, char * const argv[]) {
 	signal(SIGCHLD, SIG_IGN);
+	dup2(1, 3);
 	
 	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
