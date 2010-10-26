@@ -49,7 +49,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	
 	// special commands
 	if (arglist[0] == "exit") {
-		write(3, " client exit\n", 13);
+		write(3, "\n client exit\n", 14);
 		exit(0);
 	}
 	
@@ -226,6 +226,9 @@ int main() {
 		
 		
 	}
+	
+	
+	write(3, "\n client connection closed\n", 27);
 	
 	return 0;
 }
