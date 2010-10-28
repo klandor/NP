@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>8504D94B1279E6F500B07F5B</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>mysh.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>8504D94C1279E6F500B07F5B</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>mysh.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>8504D94F1279F04C00B07F5B</string>
+						<key>history</key>
+						<array>
+							<string>8504D948127941BE00B07F5B</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1220, 654}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 78 1220 695 0 0 1280 778 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -306,8 +347,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -325,13 +364,13 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8504D94712793CF700B07F5B</string>
+										<string>8504D94E1279F04C00B07F5B</string>
 										<key>history</key>
 										<array>
 											<string>852C23D2127150A200E84C21</string>
 											<string>85730E0312744CCD00609F2C</string>
 											<string>8504D93B12793C5600B07F5B</string>
-											<string>8504D93C12793C5600B07F5B</string>
+											<string>8504D9491279E6F500B07F5B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -353,6 +392,8 @@
 							<string>438pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -530,8 +571,9 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>85EBB1F612601D7A009A35D9</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>8504D94B1279E6F500B07F5B</string>
 	</array>
 	<key>WindowString</key>
 	<string>215 58 859 714 0 0 1280 778 </string>

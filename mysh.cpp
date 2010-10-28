@@ -202,23 +202,25 @@ int main() {
 					}
 					
 					break;
-				case '#':
-					i++;
-					f = fopen(cmdlist[i].c_str(), "r");
-					if (f != NULL) {
-						pipes[MAX_PIPE + cmdNO] = fileno(f);
-					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
-					}
-					f = fopen((cmdlist[i]+".").c_str(), "w");
-					if (f != NULL) {
-						file_fd = fileno(f);
-					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
-					}
-					break;
+					
+					// for HW1 demo
+//				case '#':
+//					i++;
+//					f = fopen(cmdlist[i].c_str(), "r");
+//					if (f != NULL) {
+//						pipes[MAX_PIPE + cmdNO] = fileno(f);
+//					}
+//					else {
+//						cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
+//					}
+//					f = fopen((cmdlist[i]+".").c_str(), "w");
+//					if (f != NULL) {
+//						file_fd = fileno(f);
+//					}
+//					else {
+//						cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
+//					}
+//					break;
 
 				default:
 					arglist.push_back(cmdlist[i]);
