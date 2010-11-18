@@ -1,0 +1,17 @@
+login0
+0:who
+login1
+1:name user2
+1:who
+0:name user1
+0:name user2
+0:name user3
+login2
+2:who
+2:name user3
+2:who
+2:name (no name)
+2:who
+2:name user1
+2:who
+exit

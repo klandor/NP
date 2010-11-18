@@ -1,0 +1,16 @@
+login0
+login1
+login2
+0:name user1
+1:name user2
+0:who
+2:name user3
+0:who
+0:yell 大家好 我來了
+2:yell Hello! Everyone.
+1:tell 1 你好
+1:tell 3 你好
+0:tell 2 你好
+0:tell 3 哈囉 你在做什麼
+2:tell 1 我正在demo NP project 2, 等下聊,掰.
+exit

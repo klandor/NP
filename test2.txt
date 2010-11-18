@@ -1,0 +1,11 @@
+login0
+0:removetag test.html |
+0:number |7
+0:cat test.html |1 ls | number |
+0:number |
+0:cat
+0:number test.html |2 cat test.html |2
+0:number |1
+0:number |
+0:number
+exit

@@ -22,6 +22,9 @@ public:
 	{
 		nick = "(no name)";
 		path = "bin:.";
+		for (int i=0; i<MAX_CLIENT+1; i++) {
+			in_pipes[i] = -1;
+		}
 	}
 	clientd(int fd, int no)
 	{
@@ -29,14 +32,27 @@ public:
 		this->no = no;
 		nick = "(no name)";
 		path = "bin:.";
+		for (int i=0; i<MAX_CLIENT+1; i++) {
+			in_pipes[i] = -1;
+		}
 	}
+	
+	~clientd()
+	{
+		for (int i=0; i<MAX_CLIENT+1; i++) {
+			if (in_pipes[i]>=0) {
+				close(in_pipes[i]);
+			}
+		}
+	}
+	
 	int exec_line(string line);
 	int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd);
 //private:
 	void clearpipe(int cmdNO);
-	int fd, no, cmdNO, in_pipes[MAX_CLIENT];
+	int fd, no, cmdNO, in_pipes[MAX_CLIENT+1];
 	string nick, path, ip;
-	map<int, int> pipes;
+	map<int, int> pipe_queue;
 };
 
 int readline(int fd,char *ptr,int maxlen)
@@ -190,7 +206,16 @@ int main (int argc, char * const argv[]) {
 				i->second.exec_line(string(t));
 				//break;
 				if (!FD_ISSET(i->second.fd, &afds)) {
+					int no = i->second.no;
+					for(map<int, clientd>::iterator j = clients.begin(); j!=clients.end(); j++)
+					{
+						if (j->second.in_pipes[no] >=0) {
+							close( j->second.in_pipes[no] );
+							j->second.in_pipes[no] = -1;
+						}
+					}
 					clients.erase(i);
+					break;
 				}
 			}
 		}
@@ -203,6 +228,13 @@ int main (int argc, char * const argv[]) {
 
 int clientd::exec_line(string line){
 	istringstream iss(line);
+	{
+		istringstream iss2(line);
+		getline(iss2, line, '\n');
+		istringstream iss3(line);
+		getline(iss3, line, '\r');
+	}
+	
 	string s;
 //	vector<string> cmdlist;
 //	while (iss >> s) {
@@ -215,19 +247,19 @@ int clientd::exec_line(string line){
 		switch (s[0]) {
 			case '|':
 				target_pipe = atoi(s.c_str()+1);
-				if (pipes.find((cmdNO+1+target_pipe) % MAX_PIPE) 
-					== pipes.end()) { 
+				if (pipe_queue.find((cmdNO+1+target_pipe) % MAX_PIPE) 
+					== pipe_queue.end()) { 
 					//target pipe not found
 					int fd[2];
 					pipe(fd);
-					pipes[((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[1];
-					pipes[MAX_PIPE+((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[0];
+					pipe_queue[((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[1];
+					pipe_queue[MAX_PIPE+((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[0];
 				}
 				
-				write_fd = pipes[((cmdNO+1+target_pipe) % MAX_PIPE)];
+				write_fd = pipe_queue[((cmdNO+1+target_pipe) % MAX_PIPE)];
 				
-				if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
-					read_fd = pipes[MAX_PIPE + cmdNO];
+				if (pipe_queue.find(MAX_PIPE + cmdNO) != pipe_queue.end()) {
+					read_fd = pipe_queue[MAX_PIPE + cmdNO];
 				}
 				
 				if(arglist.size()>0){
@@ -236,24 +268,84 @@ int clientd::exec_line(string line){
 				read_fd = -1; write_fd = -1;
 				break;
 			case '<':
-				iss >> s;
-				f = fopen(("ras/"+s).c_str(), "r");
-				if (f != NULL) {
-					pipes[MAX_PIPE + cmdNO] = fileno(f);
+				target_pipe = atoi(s.c_str()+1);
+				if (target_pipe == 0)  // file case
+				{
+					iss >> s;
+					f = fopen(("ras/"+s).c_str(), "r");
+					if (f != NULL) {
+						pipe_queue[MAX_PIPE + cmdNO] = fileno(f);
+					}
+					else {
+						cerr << "file: " << s << " can't be opened for read." << endl;
+					}
 				}
-				else {
-					cerr << "file: " << s << " can't be opened for read." << endl;
+				else {		// user pipe case
+					if (in_pipes[target_pipe] <0) {
+						//*** Error: the pipe #7->#3 does not exist yet. ***
+						ostringstream oss;
+						oss << "*** Error: the pipe #"<< target_pipe <<"->#"<< no <<" does not exist yet. ***\n";
+						string s = oss.str();
+						write(fd, s.c_str(), s.size());
+						arglist.insert(arglist.begin(), "noop");
+					}
+					else {
+						pipe_queue[MAX_PIPE + cmdNO] = in_pipes[target_pipe];
+						in_pipes[target_pipe] = -1;
+						//*** student3 (#3) just received from student7 (#7) by 'cat <7' ***
+						ostringstream oss;
+						oss <<"*** "<< nick <<" (#"<< no <<") just received from ";
+						oss << clients.find(target_pipe)->second.nick;
+						oss <<" (#"<< target_pipe <<") by '"<< line <<"' ***\n";
+						broadcast( oss.str() );
+					}
+
 				}
+
 				
 				break;
 			case '>':
-				iss >>s;
-				f = fopen(("ras/"+s).c_str(), "w");
-				if (f != NULL) {
-					file_fd = fileno(f);
+				target_pipe = atoi(s.c_str()+1);
+				if (target_pipe == 0)  // file case
+				{
+					iss >>s;
+					f = fopen(("ras/"+s).c_str(), "w");
+					if (f != NULL) {
+						file_fd = fileno(f);
+					}
+					else {
+						cerr << "file: " << s << " can't be opened for write." << endl;
+					}
 				}
-				else {
-					cerr << "file: " << s << " can't be opened for write." << endl;
+				else {		// user pipe case
+					if (clients.find(target_pipe) == clients.end()) { // target user not found
+						ostringstream oss;
+						oss << "Error: target user id '" << target_pipe <<  "' not found.\n";
+						string s = oss.str();
+						write(fd, s.c_str(), s.size());
+					}
+					else {
+						if (clients.find(target_pipe)->second.in_pipes[no] >= 0 ) {
+							ostringstream oss;
+							oss <<"*** Error: the pipe #"<< no <<"->#"<< target_pipe<<" already exists. ***\n";
+							string s = oss.str();
+							write(fd, s.c_str(), s.size());
+							arglist.insert(arglist.begin(), "noop");
+						}
+						else {
+							int pipe_fd[2];
+							pipe(pipe_fd);
+							clients.find(target_pipe)->second.in_pipes[no] = pipe_fd[0];
+							file_fd = pipe_fd[1];
+							//*** student7 (#7) just piped 'cat test.html >3' to student3 (#3) ***
+							ostringstream oss;
+							oss <<"*** "<< nick <<" (#"<< no <<") just piped '"<< line << "' to ";
+							oss << clients.find(target_pipe)->second.nick <<" (#"<< target_pipe <<") ***\n";
+							broadcast( oss.str() );
+							
+						}
+					}
+					
 				}
 				
 				break;
@@ -283,8 +375,8 @@ int clientd::exec_line(string line){
 		
 	}
 	if (arglist.size()>0) {
-		if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
-			read_fd = pipes[MAX_PIPE + cmdNO];
+		if (pipe_queue.find(MAX_PIPE + cmdNO) != pipe_queue.end()) {
+			read_fd = pipe_queue[MAX_PIPE + cmdNO];
 		}
 		if (file_fd >= 0) {
 			write_fd = file_fd;
@@ -490,7 +582,7 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 
 		
-		for(map<int,int>::iterator i = pipes.begin(); i != pipes.end(); i++)
+		for(map<int,int>::iterator i = pipe_queue.begin(); i != pipe_queue.end(); i++)
 			close( i->second);
 		
 		execvp(args[0], args);
@@ -509,12 +601,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 }
 
 void clientd::clearpipe(int cmdNO){
-	if (pipes.find(cmdNO) != pipes.end()) {
-		close(pipes[cmdNO]);
-		pipes.erase(cmdNO);
+	if (pipe_queue.find(cmdNO) != pipe_queue.end()) {
+		close(pipe_queue[cmdNO]);
+		pipe_queue.erase(cmdNO);
 	}
-	if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
-		close(pipes[MAX_PIPE + cmdNO]);
-		pipes.erase(MAX_PIPE + cmdNO);
+	if (pipe_queue.find(MAX_PIPE + cmdNO) != pipe_queue.end()) {
+		close(pipe_queue[MAX_PIPE + cmdNO]);
+		pipe_queue.erase(MAX_PIPE + cmdNO);
 	}
 }
