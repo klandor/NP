@@ -475,6 +475,10 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 		else {
 			nick = arglist[1];
+			for (int i=2; i<arglist.size(); i++) {
+				nick += " " + arglist[i];
+				
+			}
 			broadcast("*** User from " + ip +" is named '" + nick + "'. ***\n");
 		}
 

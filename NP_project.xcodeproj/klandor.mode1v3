@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8570053512952CB400F8AEEF</string>
+						<string>8570053F1295585500F8AEEF</string>
 						<key>history</key>
 						<array>
 							<string>8570051312952B1100F8AEEF</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8570053612952CB400F8AEEF</string>
+						<string>857005401295585500F8AEEF</string>
 						<key>history</key>
 						<array>
 							<string>857004DA129514F900F8AEEF</string>
@@ -310,8 +310,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -353,7 +351,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -389,12 +387,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>server.cpp</string>
+								<string>Makefile</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -402,17 +402,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>server.cpp</string>
+										<string>Makefile</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8570053412952CB400F8AEEF</string>
+										<string>8570053E1295585500F8AEEF</string>
 										<key>history</key>
 										<array>
 											<string>85EDA9D9128C1FDE00F65746</string>
 											<string>8526201C1293FAB700B06978</string>
+											<string>8570053D1295585500F8AEEF</string>
 											<string>857004591294FD5400F8AEEF</string>
-											<string>8570050F12952B1100F8AEEF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -610,14 +610,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>857005411295585500F8AEEF</string>
 		<string>8570051F12952B1100F8AEEF</string>
 		<string>8570052012952B1100F8AEEF</string>
 		<string>85EBB1F612601D7A009A35D9</string>
 		<string>85B943A9128E765A00F0883C</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
 		<string>853CADB61282A9070003EDD2</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
 	<string>215 58 859 714 0 0 1280 778 </string>
