@@ -4,11 +4,17 @@
 #include<netinet/in.h>
 #include <unistd.h>
 #include <string.h>
+#include "NP_structs.h"
+#include <sys/shm.h>
 using namespace std;
 int main (int argc, char * const argv[]) {
 	signal(SIGCHLD, SIG_IGN);
 	dup2(1, 3);
 	
+	int shmid = shmget(SHM_KEY, sizeof(NP_ipc), SHM_R|SHM_W|IPC_CREAT);
+	NP_ipc *ipc_data = (NP_ipc*) shmat(shmid, 0, 0);
+	for (int i=0; i<MAX_CLIENT; i++)
+		ipc_data->free_client_no[i] = 0;
 	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ServerSocket <0) {

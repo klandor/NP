@@ -18,6 +18,7 @@
 #include <string.h>
 #include <vector>
 #include <map>
+#include "NP_structs.h"
 using namespace std;
 
 
