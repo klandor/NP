@@ -323,6 +323,7 @@ int clientd::exec_line(string line){
 						oss << "Error: target user id '" << target_pipe <<  "' not found.\n";
 						string s = oss.str();
 						write(fd, s.c_str(), s.size());
+						arglist.insert(arglist.begin(), "noop");
 					}
 					else {
 						if (clients.find(target_pipe)->second.in_pipes[no] >= 0 ) {
