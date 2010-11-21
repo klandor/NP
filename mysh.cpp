@@ -19,6 +19,7 @@
 #include <vector>
 #include <map>
 #include <sys/shm.h>
+ #include <fcntl.h>
 #include "NP_structs.h"
 using namespace std;
 
@@ -278,12 +279,19 @@ int main(int argc, char * const argv[]) {
 	while (getline(cin, line, '\n')) {
 		
 		istringstream iss(line);
+		{
+			istringstream iss2(line);
+			getline(iss2, line, '\n');
+			istringstream iss3(line);
+			getline(iss3, line, '\r');
+        }
 		string s;
 		vector<string> cmdlist;
 		while (iss >> s) {
 			cmdlist.push_back(s);
 		}
 		int target_pipe, read_fd=-1, write_fd=-1, file_fd = -1;
+		string pipe_to_remove;
 		FILE* f;
 		vector<string> arglist;
 		for (int i=0; i<cmdlist.size(); i++) {
@@ -309,26 +317,84 @@ int main(int argc, char * const argv[]) {
 						myexec(arglist, cmdNO, read_fd, write_fd);
 					}
 					read_fd = -1; write_fd = -1;
+					if (pipe_to_remove.size()>0) {
+						remove(pipe_to_remove.c_str());
+						pipe_to_remove = "";
+					}
 					break;
 				case '<':
-					i++;
-					f = fopen(cmdlist[i].c_str(), "r");
-					if (f != NULL) {
-						pipes[MAX_PIPE + cmdNO] = fileno(f);
+					target_pipe = atoi(s.c_str()+1);
+					if (target_pipe == 0)  // file case
+					{
+						i++;
+						f = fopen(cmdlist[i].c_str(), "r");
+						if (f != NULL) {
+							pipes[MAX_PIPE + cmdNO] = fileno(f);
+						}
+						else {
+							cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
+						}
 					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
+					else {          // user pipe case
+						char pipe_name[15];
+						sprintf(pipe_name, "../%dX%d.pipe",target_pipe, my_no+1);
+						int t = open(pipe_name, O_RDONLY);
+						if (t <0) {
+							//*** Error: the pipe #7->#3 does not exist yet. ***
+							cout << "*** Error: the pipe #"<< target_pipe <<"->#"<< my_no+1 <<" does not exist yet. ***\n";
+							arglist.insert(arglist.begin(), "noop");
+						}
+						else {  
+							pipes[MAX_PIPE + cmdNO] = t;
+//							in_pipes[target_pipe] = -1;
+							//*** student3 (#3) just received from student7 (#7) by 'cat <7' ***                        
+							ostringstream oss;
+							oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just received from ";
+							oss << ipc_data->clients[target_pipe-1].nick;
+							oss <<" (#"<< target_pipe <<") by '"<< line <<"' ***\n";
+							broadcast( ipc_data, oss.str() );
+							pipe_to_remove = pipe_name;
+						}
+						
 					}
-					
 					break;
 				case '>':
-					i++;
-					f = fopen(cmdlist[i].c_str(), "w");
-					if (f != NULL) {
-						file_fd = fileno(f);
+					target_pipe = atoi(s.c_str()+1);
+					if (target_pipe == 0)  // file case
+					{
+						i++;
+						f = fopen(cmdlist[i].c_str(), "w");
+						if (f != NULL) {
+							file_fd = fileno(f);
+						}
+						else {  
+							cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
+						}
 					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
+					else {          // user pipe case
+						if ( ipc_data->free_client_no[target_pipe-1]) { // target user not found
+							cout << "Error: target user id '" << target_pipe <<  "' not found.\n";
+							arglist.insert(arglist.begin(), "noop");
+						}
+						else {  
+							char pipe_name[10];
+							sprintf(pipe_name, "../%dX%d.pipe", my_no+1, target_pipe);
+							int t=open(pipe_name, O_RDONLY);
+							if (t > 0 ) { // pipe exists
+								cout <<"*** Error: the pipe #"<< my_no+1 <<"->#"<< target_pipe<<" already exists. ***\n";
+								close(t);
+								arglist.insert(arglist.begin(), "noop");
+							}
+							else {  
+								file_fd = open(pipe_name, O_WRONLY|O_CREAT);
+								//*** student7 (#7) just piped 'cat test.html >3' to student3 (#3) ***
+								ostringstream oss;
+								oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just piped '"<< line << "' to ";
+								oss << ipc_data->clients[target_pipe-1].nick <<" (#"<< target_pipe <<") ***\n";
+								broadcast(ipc_data, oss.str() );
+								
+							}
+						}
 					}
 					
 					break;
@@ -369,7 +435,14 @@ int main(int argc, char * const argv[]) {
 				close(file_fd);
 			}
 			
+			if (pipe_to_remove.size()>0) {
+				remove(pipe_to_remove.c_str());
+				pipe_to_remove = "";
+			}
+			
 		}
+		
+		
 		
 //		cout << "% ";
 //		cout.flush();
