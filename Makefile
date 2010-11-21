@@ -18,4 +18,9 @@ client:
 ipcrm:
 	ipcrm -M 56523 -S 56523
 
-.PHONY: server mysh client ipcrm
+push:
+	git push github master
+pull:
+	git pull github master
+
+.PHONY: server mysh client ipcrm push pull
