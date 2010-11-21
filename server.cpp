@@ -2,19 +2,38 @@
 #include <sys/socket.h>
 #include <signal.h>
 #include<netinet/in.h>
+#include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
 #include "NP_structs.h"
-#include <sys/shm.h>
 using namespace std;
 int main (int argc, char * const argv[]) {
 	signal(SIGCHLD, SIG_IGN);
 	dup2(1, 3);
 	
 	int shmid = shmget(SHM_KEY, sizeof(NP_ipc), SHM_R|SHM_W|IPC_CREAT);
+	if (shmid<0) {
+		perror("shmget");
+		exit(-1);
+	}
 	NP_ipc *ipc_data = (NP_ipc*) shmat(shmid, 0, 0);
 	for (int i=0; i<MAX_CLIENT; i++)
-		ipc_data->free_client_no[i] = 0;
+		ipc_data->free_client_no[i] = 1;
+	
+	ipc_data->semid = semget(SHM_KEY, MAX_CLIENT+1, SEM_R|SEM_A|IPC_CREAT);
+	if (ipc_data->semid<0) {
+		perror("shmget");
+		exit(-1);
+	}
+	{
+		semun arg;
+		arg.val = 1;
+		for (int i=0; i<MAX_CLIENT+1; i++) {
+			if(semctl(ipc_data->semid, i, SETVAL, arg) <0)
+				perror("semctl");
+		}
+		
+	}
 	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ServerSocket <0) {
@@ -47,8 +66,29 @@ int main (int argc, char * const argv[]) {
 		
 		int tmp = -1; 
 		tmp=accept(ServerSocket,(struct sockaddr *)& cln,&sLen);
-		if(tmp==-1){
+		if(tmp<0){
 			cerr<<"Accept Error!!\n";
+		}
+		
+		int no=0;
+		while (no<MAX_CLIENT) {
+			if (ipc_data->free_client_no[no]) {
+				ipc_data->free_client_no[no] = 0;
+				strcpy(ipc_data->clients[no].ip, inet_ntoa(cln.sin_addr)) ;
+				
+				cout << "Client " << no << " just entered from "
+					<<ipc_data->clients[no].ip <<".\n";
+				
+				break;
+			}
+			no++;
+		}
+		
+		if (no == MAX_CLIENT) {
+			string s = "Sorry, server full.\n";
+			write(tmp , s.c_str(), s.size());
+			close(tmp);
+			continue;
 		}
 		
 		int cpid = fork();
@@ -59,6 +99,7 @@ int main (int argc, char * const argv[]) {
 		}
 		else {
 			
+			ipc_data->clients[no].init(getpid());
 
 			dup2(tmp, 0);
 			dup2(tmp, 1);
@@ -68,12 +109,15 @@ int main (int argc, char * const argv[]) {
 			close(ServerSocket);
 			char command[] = "./mysh";
 			
-			char * args[2] = { command, 0};
+			char * args[3] = { command, new char[10],0};
 			
+			sprintf(args[1], "%d", no);
 			//cout << "prepare to exec...\n";
 			cout.flush();
 			execvp(command, args);
-			
+			perror("exec");
+			ipc_data->free_client_no[no] = 1;
+			exit(-1);
 			//cout << "exec failed!\n";
 		}
 	}

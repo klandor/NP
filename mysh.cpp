@@ -18,6 +18,7 @@
 #include <string.h>
 #include <vector>
 #include <map>
+#include <sys/shm.h>
 #include "NP_structs.h"
 using namespace std;
 
@@ -26,6 +27,9 @@ using namespace std;
 
 
 map<int, int> pipes;
+NP_ipc *ipc_data;
+int my_no;
+
 
 void clearpipe(int cmdNO){
 	if (pipes.find(cmdNO) != pipes.end()) {
@@ -35,6 +39,13 @@ void clearpipe(int cmdNO){
 	if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
 		close(pipes[MAX_PIPE + cmdNO]);
 		pipes.erase(MAX_PIPE + cmdNO);
+	}
+}
+
+void pop_msg (int param)
+{
+	while (ipc_data->clients[my_no].buff_size() > 0) {
+		cout << ipc_data->clients[my_no].buff_pop() << endl;
 	}
 }
 
@@ -50,6 +61,9 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	
 	// special commands
 	if (arglist[0] == "exit") {
+		broadcast(ipc_data, " *** User '" 
+				  + string(ipc_data->clients[my_no].nick)+ "' left. ***\n");
+		ipc_data->free_client_no[my_no]=1;
 		write(3, "\n client exit\n", 14);
 		exit(0);
 	}
@@ -74,6 +88,96 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 			write(write_fd, "\n", 1);
 			//write()
 		}
+		arglist.clear();
+		clearpipe(cmdNO);
+		return 0;
+	}
+	
+	if (arglist[0] == "who"){
+		ostringstream oss;
+		for(int i = 0; i<MAX_CLIENT; i++)
+		{
+			if (! (ipc_data->free_client_no[i])) {
+				oss << i+1 << '\t' << ipc_data->clients[i].nick << '\t' << ipc_data->clients[i].ip;
+				if (i == my_no) {
+					oss << "\t<- me";
+				}
+				oss << '\n';
+			}
+		}
+		
+		cout << oss.str();
+		
+		arglist.clear();
+		clearpipe(cmdNO);
+		return 0;
+        }
+	
+	if (arglist[0] == "name"){
+		if (arglist.size() == 1) {
+			cout << "Usage: name new_name\n";
+		}
+		else {
+			string nick = arglist[1];
+			for (int i=2; i<arglist.size(); i++) {
+				nick += " " + arglist[i];
+				
+			}
+			ipc_data->clients[my_no].setNick(nick);
+			broadcast(ipc_data, "*** User from " + string(ipc_data->clients[my_no].ip) +" is named '" + nick + "'. ***");
+		}
+		
+		
+		arglist.clear();
+		clearpipe(cmdNO);
+		return 0;
+	}
+	
+	if (arglist[0] == "yell"){
+		if (arglist.size() == 1) {
+			cout <<  "Usage: yell <message>\n";
+					}
+		else {  
+			ostringstream oss;
+			oss << "*** " << ipc_data->clients[my_no].nick 
+				<< " yelled ***: ";
+			for(int i=1; i<arglist.size(); i++)
+			{
+				oss << ' ' << arglist[i];
+			}
+			broadcast(ipc_data, oss.str());
+		}
+		
+		
+		arglist.clear();                clearpipe(cmdNO);
+		return 0;
+	}
+	
+	if (arglist[0] == "tell"){
+		if (arglist.size() <= 2) {
+			cout << "Usage: tell <user_id#> <message>\n";
+		}
+		else {  
+			istringstream iss(arglist[1]);
+			int to;
+			if ((iss >> to) && (! (ipc_data->free_client_no[to-1] ) ) ) {
+				ostringstream oss;
+				for(int i=2; i<arglist.size(); i++)
+				{
+					oss << ' ' << arglist[i];
+				}
+				string s("*** "+ string(ipc_data->clients[my_no].nick) +" told you ***: " + oss.str());
+				ipc_data->clients[to-1].buff_insert(s);
+			}
+			else {
+				cout << "Error: user id '" + arglist[1]  + "' doesn't exit.\n";
+				
+			}
+			
+			
+		}
+		
+		
 		arglist.clear();
 		clearpipe(cmdNO);
 		return 0;
@@ -124,8 +228,9 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	return 0;
 }
 
-int main() { 
+int main(int argc, char * const argv[]) { 
 	signal(SIGCHLD, SIG_DFL);
+	
 	
 	ifstream wel;
 	wel.open("welcome_message.txt");
@@ -135,19 +240,43 @@ int main() {
 		cout << line << endl;
 	}
 	
+
 	int cmdNO = 0;
 	if(chdir("ras/")<0)
 		perror("chdir");
 	
-	int r = setenv("PATH", "bin:.", 1);
-	if( r < 0)
-		cerr << "setenv FAIL!\n";
+	
+	{
+		int r = setenv("PATH", "bin:.", 1);
+		if( r < 0)
+			perror("setenv");
+		
+		int shmid = shmget(SHM_KEY, sizeof(NP_ipc), SHM_R|SHM_W|IPC_CREAT);
+		if (shmid<0) {
+			perror("shmget");
+			exit(-1);
+		}
+		ipc_data = (NP_ipc*) shmat(shmid, 0, 0);
+	}
+	if(argc > 1)
+		my_no = atoi(argv[1]);
+	else {
+		my_no = 0;
+		ipc_data->free_client_no[0] = 0;
+		ipc_data->clients[0].init(getpid());
+	}
+	
+	signal(SIGUSR1, pop_msg);
+	broadcast(ipc_data, 
+			  "*** User '(no name)' entered from " + 
+			  string(ipc_data->clients[my_no].ip) +". ***");
 	
 //	cout << "% ";
 //	cout.flush();
 	
 //	string line;
 	while (getline(cin, line, '\n')) {
+		
 		istringstream iss(line);
 		string s;
 		vector<string> cmdlist;
