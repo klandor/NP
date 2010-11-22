@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <sys/socket.h>
 #include <signal.h>
@@ -117,6 +118,11 @@ int main (int argc, char * const argv[]) {
 	//signal(SIGCHLD, SIG_IGN);
 	dup2(1, 3);
 	
+	ifstream wel;
+	wel.open("welcome_message.txt");
+	
+	string welcome_message;
+	getline(wel, welcome_message, '\0');
 	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ServerSocket <0) {
@@ -174,6 +180,7 @@ int main (int argc, char * const argv[]) {
 			FD_SET(tmp, &afds);
 			
 			if (free_client_no.size()>0) {
+				write(tmp, welcome_message.c_str(), welcome_message.size());
 				clientd c(tmp, *free_client_no.begin());
 				c.ip = inet_ntoa(cln.sin_addr);
 				clients[c.no]= c;

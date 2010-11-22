@@ -1,4 +1,4 @@
-all: server mysh client
+all: server client
 
 server:
 	g++ -g server.cpp -o $@
