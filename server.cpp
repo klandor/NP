@@ -10,6 +10,8 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <sys/types.h>
+#include <sys/wait.h>
 #define MAX_PIPE 1200
 #define MAX_CLIENT 30
 using namespace std;
