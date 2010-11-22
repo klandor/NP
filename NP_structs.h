@@ -10,7 +10,7 @@
 #include <sys/sem.h>
 #include <sys/shm.h>
 #define MAX_CLIENT 30
-#define MAX_BUFF_SIZE 100
+#define MAX_BUFF_SIZE 10
 #define SHM_KEY 56523
 using namespace std;
 
@@ -45,7 +45,7 @@ public:
 		strcpy(nick, s.c_str());
 	}
 //private:
-	char buff[MAX_BUFF_SIZE][300], nick[30], ip[20];
+	char buff[MAX_BUFF_SIZE][1030], nick[30], ip[20];
 	int f,r, pid;
 };
 

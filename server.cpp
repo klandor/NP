@@ -11,6 +11,7 @@ int main (int argc, char * const argv[]) {
 	signal(SIGCHLD, SIG_IGN);
 	dup2(1, 3);
 	
+	//cout << "sizeof(NP_ipc): " << sizeof(NP_ipc) << endl;
 	int shmid = shmget(SHM_KEY, sizeof(NP_ipc), SHM_R|SHM_W|IPC_CREAT);
 	if (shmid<0) {
 		perror("shmget");
@@ -20,20 +21,20 @@ int main (int argc, char * const argv[]) {
 	for (int i=0; i<MAX_CLIENT; i++)
 		ipc_data->free_client_no[i] = 1;
 	
-	ipc_data->semid = semget(SHM_KEY, MAX_CLIENT+1, SEM_R|SEM_A|IPC_CREAT);
-	if (ipc_data->semid<0) {
-		perror("shmget");
-		exit(-1);
-	}
-	{
-		semun arg;
-		arg.val = 1;
-		for (int i=0; i<MAX_CLIENT+1; i++) {
-			if(semctl(ipc_data->semid, i, SETVAL, arg) <0)
-				perror("semctl");
-		}
-		
-	}
+//	ipc_data->semid = semget(SHM_KEY, MAX_CLIENT+1, SEM_R|SEM_A|IPC_CREAT);
+//	if (ipc_data->semid<0) {
+//		perror("shmget");
+//		exit(-1);
+//	}
+//	else{
+//		semun arg;
+//		arg.val = 1;
+//		for (int i=0; i<MAX_CLIENT+1; i++) {
+//			if(semctl(ipc_data->semid, i, SETVAL, arg) <0)
+//				perror("semctl");
+//		}
+//		
+//	}
 	
     int ServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (ServerSocket <0) {

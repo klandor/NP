@@ -8,6 +8,7 @@ mysh:
 	
 client:
 	rm -Rf ras
+	rm -f *.pipe
 	cp -r ras-default ras
 	g++ -g -o client delayedclient_new.c
 	g++ -o ras/bin/noop noop.cpp
@@ -16,7 +17,7 @@ client:
 	cp /bin/ls /bin/cat ras/bin/
 
 ipcrm:
-	ipcrm -M 56523 -S 56523
+	ipcrm -M 56523
 
 push:
 	git push github master

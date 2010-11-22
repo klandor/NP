@@ -62,8 +62,15 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 	
 	// special commands
 	if (arglist[0] == "exit") {
+		char filename[50];
+		for (int i=0; i<MAX_CLIENT; i++) {
+			sprintf(filename, "../%dX%d.pipe", i+1, my_no+1);
+			remove(filename);
+			sprintf(filename, "../%dX%d.pipe", my_no+1, i+1);
+			remove(filename);
+		}
 		broadcast(ipc_data, " *** User '" 
-				  + string(ipc_data->clients[my_no].nick)+ "' left. ***\n");
+				  + string(ipc_data->clients[my_no].nick)+ "' left. ***");
 		ipc_data->free_client_no[my_no]=1;
 		write(3, "\n client exit\n", 14);
 		exit(0);
@@ -351,7 +358,7 @@ int main(int argc, char * const argv[]) {
 							ostringstream oss;
 							oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just received from ";
 							oss << ipc_data->clients[target_pipe-1].nick;
-							oss <<" (#"<< target_pipe <<") by '"<< line <<"' ***\n";
+							oss <<" (#"<< target_pipe <<") by '"<< line <<"' ***";
 							broadcast( ipc_data, oss.str() );
 							pipe_to_remove = pipe_name;
 						}
@@ -390,7 +397,7 @@ int main(int argc, char * const argv[]) {
 								//*** student7 (#7) just piped 'cat test.html >3' to student3 (#3) ***
 								ostringstream oss;
 								oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just piped '"<< line << "' to ";
-								oss << ipc_data->clients[target_pipe-1].nick <<" (#"<< target_pipe <<") ***\n";
+								oss << ipc_data->clients[target_pipe-1].nick <<" (#"<< target_pipe <<") ***";
 								broadcast(ipc_data, oss.str() );
 								
 							}
