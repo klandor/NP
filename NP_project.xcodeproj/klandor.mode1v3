@@ -202,24 +202,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>85E1AC25129A23CC00994583</string>
+				<string>85E1AC6A129A5A8E00994583</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>mysh.cpp</string>
+				<string>server.cpp</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>85E1AC26129A23CC00994583</string>
+						<string>85E1AC6B129A5A8E00994583</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>mysh.cpp</string>
+						<string>server.cpp</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>85E1AC48129A3ADD00994583</string>
+						<string>85E1AC6C129A5A8E00994583</string>
 						<key>history</key>
 						<array>
-							<string>85E1AC2D129A24CE00994583</string>
+							<string>85E1AC65129A5A8300994583</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -235,7 +235,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>14 78 1220 695 0 0 1280 778 </string>
+				<string>18 78 1220 695 0 0 1280 778 </string>
 			</dict>
 		</dict>
 	</array>
@@ -311,7 +311,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -354,7 +354,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>server.cpp</string>
+								<string>NP_structs.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -362,18 +362,14 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>server.cpp</string>
+										<string>NP_structs.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>85E1AC47129A3ADD00994583</string>
+										<string>85E1AC67129A5A8E00994583</string>
 										<key>history</key>
 										<array>
-											<string>85473BD7129928D000564F50</string>
-											<string>85E1AC32129A39D600994583</string>
-											<string>85E1AC41129A3AC600994583</string>
-											<string>85E1AC45129A3ADD00994583</string>
-											<string>85E1AC46129A3ADD00994583</string>
+											<string>85E1AC66129A5A8E00994583</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -385,14 +381,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {653, 520}}</string>
+								<string>{{0, 0}, {653, 510}}</string>
 								<key>RubberWindowFrame</key>
 								<string>214 58 859 714 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>520pt</string>
+							<string>510pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -405,14 +401,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 525}, {653, 148}}</string>
+								<string>{{0, 515}, {653, 158}}</string>
 								<key>RubberWindowFrame</key>
 								<string>214 58 859 714 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>148pt</string>
+							<string>158pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -431,9 +427,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>85E1AC23129A23CC00994583</string>
+				<string>85E1AC68129A5A8E00994583</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>85E1AC24129A23CC00994583</string>
+				<string>85E1AC69129A5A8E00994583</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,8 +568,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>85EBB1F612601D7A009A35D9</string>
-		<string>85E1AC25129A23CC00994583</string>
 		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
+		<string>85E1AC6A129A5A8E00994583</string>
 	</array>
 	<key>WindowString</key>
 	<string>214 58 859 714 0 0 1280 778 </string>
@@ -653,7 +649,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>85EBB1F612601D7A009A35D9</string>
-				<string>85E1AC28129A23CC00994583</string>
+				<string>85E1AC6D129A5A8E00994583</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
