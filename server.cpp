@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include <sstream>
 #include <sys/socket.h>
 #include <signal.h>
@@ -12,6 +11,8 @@
 #include <vector>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX_PIPE 1200
 #define MAX_CLIENT 30
 using namespace std;
