@@ -11,6 +11,7 @@
 #include <sys/shm.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <stdio.h>
 #define MAX_CLIENT 30
 #define MAX_BUFF_SIZE 10
 #define SHM_KEY 56523

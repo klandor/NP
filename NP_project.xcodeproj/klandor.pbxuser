@@ -105,6 +105,8 @@
 			85E1AC66129A5A8E00994583 /* PBXBookmark */ = 85E1AC66129A5A8E00994583 /* PBXBookmark */;
 			85E1AC67129A5A8E00994583 /* PBXTextBookmark */ = 85E1AC67129A5A8E00994583 /* PBXTextBookmark */;
 			85E1AC6C129A5A8E00994583 /* PBXTextBookmark */ = 85E1AC6C129A5A8E00994583 /* PBXTextBookmark */;
+			85E1AC6E129A5B7800994583 /* PBXTextBookmark */ = 85E1AC6E129A5B7800994583 /* PBXTextBookmark */;
+			85E1AC6F129A5B7800994583 /* PBXTextBookmark */ = 85E1AC6F129A5B7800994583 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 85EBB1F1125EF072009A35D9 /* Source Control */;
 		userBuildSettings = {
@@ -172,7 +174,7 @@
 		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
 		name = "NP_structs.h: 53";
 		rLen = 14;
-		rLoc = 884;
+		rLoc = 904;
 		rType = 0;
 		vrLen = 353;
 		vrLoc = 632;
@@ -189,9 +191,9 @@
 	};
 	857006031297819F00F8AEEF /* NP_structs.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {592, 897}}";
-			sepNavSelRange = "{253, 0}";
-			sepNavVisRange = "{42, 657}";
+			sepNavIntBoundsRect = "{{0, 0}, {592, 936}}";
+			sepNavSelRange = "{274, 0}";
+			sepNavVisRange = "{42, 674}";
 		};
 	};
 	85E1ABE2129A213100994583 /* PBXTextBookmark */ = {
@@ -307,7 +309,7 @@
 		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
 		name = "NP_structs.h: 13";
 		rLen = 0;
-		rLoc = 303;
+		rLoc = 323;
 		rType = 0;
 		vrLen = 224;
 		vrLoc = 137;
@@ -417,7 +419,7 @@
 		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
 		name = "NP_structs.h: 13";
 		rLen = 0;
-		rLoc = 303;
+		rLoc = 323;
 		rType = 0;
 		vrLen = 627;
 		vrLoc = 0;
@@ -427,7 +429,7 @@
 		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
 		name = "NP_structs.h: 13";
 		rLen = 0;
-		rLoc = 303;
+		rLoc = 323;
 		rType = 0;
 		vrLen = 674;
 		vrLoc = 42;
@@ -447,7 +449,7 @@
 		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
 		name = "NP_structs.h: 13";
 		rLen = 0;
-		rLoc = 303;
+		rLoc = 323;
 		rType = 0;
 		vrLen = 674;
 		vrLoc = 42;
@@ -541,6 +543,26 @@
 		vrLoc = 42;
 	};
 	85E1AC6C129A5A8E00994583 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
+		name = "server.cpp: 8";
+		rLen = 0;
+		rLoc = 180;
+		rType = 0;
+		vrLen = 1292;
+		vrLoc = 0;
+	};
+	85E1AC6E129A5B7800994583 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
+		name = "NP_structs.h: 14";
+		rLen = 0;
+		rLoc = 274;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 42;
+	};
+	85E1AC6F129A5B7800994583 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 8";

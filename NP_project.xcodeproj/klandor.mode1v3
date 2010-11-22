@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>85E1AC6C129A5A8E00994583</string>
+						<string>85E1AC6F129A5B7800994583</string>
 						<key>history</key>
 						<array>
 							<string>85E1AC65129A5A8300994583</string>
@@ -366,7 +366,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>85E1AC67129A5A8E00994583</string>
+										<string>85E1AC6E129A5B7800994583</string>
 										<key>history</key>
 										<array>
 											<string>85E1AC66129A5A8E00994583</string>
@@ -568,8 +568,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>85EBB1F612601D7A009A35D9</string>
-		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
 		<string>85E1AC6A129A5A8E00994583</string>
+		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>214 58 859 714 0 0 1280 778 </string>
