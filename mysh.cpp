@@ -393,7 +393,8 @@ int main(int argc, char * const argv[]) {
 								arglist.insert(arglist.begin(), "noop");
 							}
 							else {  
-								file_fd = open(pipe_name, O_WRONLY|O_CREAT);
+								close(t);
+								file_fd = open(pipe_name, O_WRONLY|O_CREAT|0600);
 								//*** student7 (#7) just piped 'cat test.html >3' to student3 (#3) ***
 								ostringstream oss;
 								oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just piped '"<< line << "' to ";
