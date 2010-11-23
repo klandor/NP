@@ -394,7 +394,8 @@ int main(int argc, char * const argv[]) {
 							}
 							else {  
 								close(t);
-								file_fd = open(pipe_name, O_WRONLY|O_CREAT|0600);
+								mode_t mode = S_IRUSR | S_IWUSR;
+								file_fd = open(pipe_name, O_WRONLY|O_CREAT, mode);
 								//*** student7 (#7) just piped 'cat test.html >3' to student3 (#3) ***
 								ostringstream oss;
 								oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just piped '"<< line << "' to ";
