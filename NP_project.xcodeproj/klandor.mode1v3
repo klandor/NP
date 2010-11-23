@@ -270,7 +270,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -306,8 +305,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -325,10 +322,11 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>852B0FB2129BF48000DB1CF6</string>
+										<string>852B0FBE129BF91800DB1CF6</string>
 										<key>history</key>
 										<array>
-											<string>852B0FAB129BF2A500DB1CF6</string>
+											<string>852B0FBC129BF91800DB1CF6</string>
+											<string>852B0FBD129BF91800DB1CF6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -350,6 +348,8 @@
 							<string>531pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

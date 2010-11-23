@@ -67,6 +67,9 @@
 			852B0FAB129BF2A500DB1CF6 /* PBXTextBookmark */ = 852B0FAB129BF2A500DB1CF6 /* PBXTextBookmark */;
 			852B0FAC129BF2A500DB1CF6 /* PBXTextBookmark */ = 852B0FAC129BF2A500DB1CF6 /* PBXTextBookmark */;
 			852B0FB2129BF48000DB1CF6 /* PBXTextBookmark */ = 852B0FB2129BF48000DB1CF6 /* PBXTextBookmark */;
+			852B0FBC129BF91800DB1CF6 /* PBXTextBookmark */ = 852B0FBC129BF91800DB1CF6 /* PBXTextBookmark */;
+			852B0FBD129BF91800DB1CF6 /* PBXTextBookmark */ = 852B0FBD129BF91800DB1CF6 /* PBXTextBookmark */;
+			852B0FBE129BF91800DB1CF6 /* PBXTextBookmark */ = 852B0FBE129BF91800DB1CF6 /* PBXTextBookmark */;
 			8531403F12994E8B0089D611 = 8531403F12994E8B0089D611 /* PBXTextBookmark */;
 			853140E412995F740089D611 = 853140E412995F740089D611 /* PBXTextBookmark */;
 			85473BD7129928D000564F50 = 85473BD7129928D000564F50 /* PBXTextBookmark */;
@@ -125,9 +128,9 @@
 	};
 	8517C06E1268A7F3003C1095 /* mysh.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {936, 5538}}";
-			sepNavSelRange = "{9663, 0}";
-			sepNavVisRange = "{8585, 1466}";
+			sepNavIntBoundsRect = "{{0, 0}, {908, 6097}}";
+			sepNavSelRange = "{3026, 0}";
+			sepNavVisRange = "{2779, 882}";
 			sepNavWindowFrame = "{{14, 22}, {1220, 751}}";
 		};
 	};
@@ -167,7 +170,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 732;
 		vrLoc = 5292;
@@ -177,7 +180,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 397";
 		rLen = 0;
-		rLoc = 9663;
+		rLoc = 9698;
 		rType = 0;
 		vrLen = 1430;
 		vrLoc = 8585;
@@ -187,10 +190,40 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 398";
 		rLen = 0;
-		rLoc = 9663;
+		rLoc = 9698;
 		rType = 0;
 		vrLen = 1466;
 		vrLoc = 8585;
+	};
+	852B0FBC129BF91800DB1CF6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 857006031297819F00F8AEEF /* NP_structs.h */;
+		name = "NP_structs.h: 64";
+		rLen = 0;
+		rLoc = 1147;
+		rType = 0;
+		vrLen = 666;
+		vrLoc = 626;
+	};
+	852B0FBD129BF91800DB1CF6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
+		name = "mysh.cpp: 447";
+		rLen = 99;
+		rLoc = 10994;
+		rType = 0;
+		vrLen = 1147;
+		vrLoc = 6449;
+	};
+	852B0FBE129BF91800DB1CF6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
+		name = "mysh.cpp: 135";
+		rLen = 0;
+		rLoc = 3026;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 2779;
 	};
 	8531403F12994E8B0089D611 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -225,8 +258,8 @@
 	857006031297819F00F8AEEF /* NP_structs.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {592, 936}}";
-			sepNavSelRange = "{274, 0}";
-			sepNavVisRange = "{42, 674}";
+			sepNavSelRange = "{1147, 0}";
+			sepNavVisRange = "{626, 666}";
 		};
 	};
 	85E1ABE2129A213100994583 /* PBXTextBookmark */ = {
@@ -248,7 +281,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 330";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 369;
 		vrLoc = 7020;
@@ -262,7 +295,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 330";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 361;
 		vrLoc = 7028;
@@ -272,7 +305,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 337";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 339;
 		vrLoc = 7170;
@@ -302,7 +335,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 337";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 300;
 		vrLoc = 7209;
@@ -312,7 +345,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 337";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 300;
 		vrLoc = 7207;
@@ -332,7 +365,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 1844;
 		vrLoc = 7507;
@@ -352,7 +385,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 337";
 		rLen = 0;
-		rLoc = 7393;
+		rLoc = 7421;
 		rType = 0;
 		vrLen = 1322;
 		vrLoc = 7235;
@@ -392,7 +425,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 1844;
 		vrLoc = 7507;
@@ -432,7 +465,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 5084;
@@ -472,7 +505,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 5084;
@@ -512,7 +545,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 5084;
@@ -552,7 +585,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */;
 		name = "mysh.cpp: 361";
 		rLen = 0;
-		rLoc = 8450;
+		rLoc = 8478;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 5084;

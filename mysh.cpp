@@ -70,7 +70,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 			remove(filename);
 		}
 		broadcast(ipc_data, " *** User '" 
-				  + string(ipc_data->clients[my_no].nick)+ "' left. ***");
+				  + string(ipc_data->clients[my_no].nick)+ "' left. ***", my_no);
 		ipc_data->free_client_no[my_no]=1;
 		write(3, "\n client exit\n", 14);
 		exit(0);
@@ -132,7 +132,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 				
 			}
 			ipc_data->clients[my_no].setNick(nick);
-			broadcast(ipc_data, "*** User from " + string(ipc_data->clients[my_no].ip) +" is named '" + nick + "'. ***");
+			broadcast(ipc_data, "*** User from " + string(ipc_data->clients[my_no].ip) +" is named '" + nick + "'. ***", my_no);
 		}
 		
 		
@@ -153,7 +153,7 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 			{
 				oss << ' ' << arglist[i];
 			}
-			broadcast(ipc_data, oss.str());
+			broadcast(ipc_data, oss.str(), my_no);
 		}
 		
 		
@@ -277,7 +277,7 @@ int main(int argc, char * const argv[]) {
 	signal(SIGUSR1, pop_msg);
 	broadcast(ipc_data, 
 			  "*** User '(no name)' entered from " + 
-			  string(ipc_data->clients[my_no].ip) +". ***");
+			  string(ipc_data->clients[my_no].ip) +". ***", my_no);
 	
 //	cout << "% ";
 //	cout.flush();
@@ -359,7 +359,7 @@ int main(int argc, char * const argv[]) {
 							oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just received from ";
 							oss << ipc_data->clients[target_pipe-1].nick;
 							oss <<" (#"<< target_pipe <<") by '"<< line <<"' ***";
-							broadcast( ipc_data, oss.str() );
+							broadcast( ipc_data, oss.str() , my_no);
 							pipe_to_remove = pipe_name;
 						}
 						
@@ -400,7 +400,7 @@ int main(int argc, char * const argv[]) {
 								ostringstream oss;
 								oss <<"*** "<< ipc_data->clients[my_no].nick <<" (#"<< my_no+1 <<") just piped '"<< line << "' to ";
 								oss << ipc_data->clients[target_pipe-1].nick <<" (#"<< target_pipe <<") ***";
-								broadcast(ipc_data, oss.str() );
+								broadcast(ipc_data, oss.str() , my_no);
 								
 							}
 						}

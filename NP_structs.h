@@ -59,9 +59,9 @@ struct NP_ipc{
 	clientd clients[MAX_CLIENT];
 };
 
-int broadcast(NP_ipc *ipc, string s){
+int broadcast(NP_ipc *ipc, string s, int no){
 	for (int i=0; i<MAX_CLIENT; i++) {
-		if (!ipc->free_client_no[i]) {
+		if ((!ipc->free_client_no[i]) && no != i) {
 			ipc->clients[i].buff_insert(s);
 			//kill(ipc->clients[i].pid, SIGUSR1);
 		}
