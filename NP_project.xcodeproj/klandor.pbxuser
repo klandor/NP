@@ -113,6 +113,7 @@
 			854472BF12AA9CCA0026DA2E /* PBXTextBookmark */ = 854472BF12AA9CCA0026DA2E /* PBXTextBookmark */;
 			854472C012AA9DA10026DA2E /* PBXTextBookmark */ = 854472C012AA9DA10026DA2E /* PBXTextBookmark */;
 			854472C112AA9DB70026DA2E /* PBXTextBookmark */ = 854472C112AA9DB70026DA2E /* PBXTextBookmark */;
+			854472C212AAA05D0026DA2E /* PBXTextBookmark */ = 854472C212AAA05D0026DA2E /* PBXTextBookmark */;
 			85730E0312744CCD00609F2C = 85730E0312744CCD00609F2C /* PBXTextBookmark */;
 		};
 		sourceControlManager = 85EBB1F1125EF072009A35D9 /* Source Control */;
@@ -121,9 +122,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* server.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {614, 1170}}";
-			sepNavSelRange = "{1394, 0}";
-			sepNavVisRange = "{1271, 460}";
+			sepNavIntBoundsRect = "{{0, 0}, {614, 1118}}";
+			sepNavSelRange = "{1312, 0}";
+			sepNavVisRange = "{1107, 488}";
 		};
 	};
 	8504D93B12793C5600B07F5B /* PBXTextBookmark */ = {
@@ -775,7 +776,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 63";
 		rLen = 0;
-		rLoc = 1394;
+		rLoc = 1396;
 		rType = 0;
 		vrLen = 471;
 		vrLoc = 1130;
@@ -785,7 +786,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 63";
 		rLen = 0;
-		rLoc = 1402;
+		rLoc = 1404;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 1130;
@@ -795,7 +796,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 63";
 		rLen = 0;
-		rLoc = 1402;
+		rLoc = 1404;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 1130;
@@ -835,7 +836,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 63";
 		rLen = 0;
-		rLoc = 1402;
+		rLoc = 1404;
 		rType = 0;
 		vrLen = 473;
 		vrLoc = 1130;
@@ -855,7 +856,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 73";
 		rLen = 0;
-		rLoc = 1582;
+		rLoc = 1584;
 		rType = 0;
 		vrLen = 475;
 		vrLoc = 1130;
@@ -875,10 +876,20 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
 		name = "server.cpp: 66";
 		rLen = 0;
-		rLoc = 1394;
+		rLoc = 1396;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 1271;
+	};
+	854472C212AAA05D0026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
+		name = "server.cpp: 62";
+		rLen = 0;
+		rLoc = 1312;
+		rType = 0;
+		vrLen = 488;
+		vrLoc = 1107;
 	};
 	85730E0312744CCD00609F2C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
