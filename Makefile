@@ -13,6 +13,7 @@ client:
 	g++ -o ras/bin/noop noop.cpp
 	g++ -o ras/bin/number number.cpp
 	g++ -o ras/bin/removetag removetag.cpp
+	g++ -o ras/bin/delayedremovetag delayedremovetag.cpp
 	cp /bin/ls /bin/cat ras/bin/
 
 push:
