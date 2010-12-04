@@ -4,6 +4,8 @@
 #include<netinet/in.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
+
 using namespace std;
 int main (int argc, char * const argv[]) {
 	signal(SIGCHLD, SIG_IGN);
@@ -61,7 +63,7 @@ int main (int argc, char * const argv[]) {
 			
 			close(tmp);
 			close(ServerSocket);
-			char command[] = "my_httpd";
+			char command[] = "./my_httpd";
 			
 			char * args[2] = { command, 0};
 			
@@ -69,7 +71,7 @@ int main (int argc, char * const argv[]) {
 			cout.flush();
 			execvp(command, args);
 			
-			cout << "exec failed!\n";
+			cerr << "exec failed!\n";
 			exit(-1);
 		}
 	}
