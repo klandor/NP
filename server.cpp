@@ -43,6 +43,7 @@ int main (int argc, char * const argv[]) {
 		tmp=accept(ServerSocket,(struct sockaddr *)& cln,&sLen);
 		if(tmp==-1){
 			cerr<<"Accept Error!!\n";
+			continue;
 		}
 		
 		int cpid = fork();
@@ -68,7 +69,8 @@ int main (int argc, char * const argv[]) {
 			cout.flush();
 			execvp(command, args);
 			
-			//cout << "exec failed!\n";
+			cout << "exec failed!\n";
+			exit(-1);
 		}
 	}
 //	string s;
