@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <signal.h>
 #include <errno.h>
 #include <string.h>
@@ -125,130 +126,70 @@ int myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int write_fd){
 
 int main() { 
 	signal(SIGCHLD, SIG_DFL);
-	
-	ifstream wel;
-	wel.open("welcome_message.txt");
-	
-	string line;
-	while (getline(wel, line, '\n')){
-		cout << line << endl;
-	}
-	
-	int cmdNO = 0;
-	if(chdir("ras/")<0)
-		perror("chdir");
-	
-	int r = setenv("PATH", "bin:.", 1);
-	if( r < 0)
-		cerr << "setenv FAIL!\n";
-	
-//	cout << "% ";
-//	cout.flush();
-	
-//	string line;
-	while (getline(cin, line, '\n')) {
-		istringstream iss(line);
-		string s;
-		vector<string> cmdlist;
-		while (iss >> s) {
-			cmdlist.push_back(s);
-		}
-		int target_pipe, read_fd=-1, write_fd=-1, file_fd = -1;
-		FILE* f;
-		vector<string> arglist;
-		for (int i=0; i<cmdlist.size(); i++) {
-			switch (cmdlist[i][0]) {
-				case '|':
-					target_pipe = atoi(cmdlist[i].c_str()+1);
-					if (pipes.find((cmdNO+1+target_pipe) % MAX_PIPE) 
-						== pipes.end()) { 
-						//target pipe not found
-						int fd[2];
-						pipe(fd);
-						pipes[((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[1];
-						pipes[MAX_PIPE+((cmdNO+1+target_pipe) % MAX_PIPE)] = fd[0];
-					}
-					
-					write_fd = pipes[((cmdNO+1+target_pipe) % MAX_PIPE)];
-					
-					if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
-						read_fd = pipes[MAX_PIPE + cmdNO];
-					}
-					
-					if(arglist.size()>0){
-						myexec(arglist, cmdNO, read_fd, write_fd);
-					}
-					read_fd = -1; write_fd = -1;
-					break;
-				case '<':
-					i++;
-					f = fopen(cmdlist[i].c_str(), "r");
-					if (f != NULL) {
-						pipes[MAX_PIPE + cmdNO] = fileno(f);
-					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
-					}
-					
-					break;
-				case '>':
-					i++;
-					f = fopen(cmdlist[i].c_str(), "w");
-					if (f != NULL) {
-						file_fd = fileno(f);
-					}
-					else {
-						cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
-					}
-					
-					break;
-					
-					// for HW1 demo
-//				case '#':
-//					i++;
-//					f = fopen(cmdlist[i].c_str(), "r");
-//					if (f != NULL) {
-//						pipes[MAX_PIPE + cmdNO] = fileno(f);
-//					}
-//					else {
-//						cerr << "file: " << cmdlist[i] << " can't be opened for read." << endl;
-//					}
-//					f = fopen((cmdlist[i]+".").c_str(), "w");
-//					if (f != NULL) {
-//						file_fd = fileno(f);
-//					}
-//					else {
-//						cerr << "file: " << cmdlist[i] << " can't be opened for write." << endl;
-//					}
-//					break;
+	string http_path = "/net/gcs/98/9856523/public_html";
 
-				default:
-					arglist.push_back(cmdlist[i]);
-			}
-
+	string method, request;
+	
+	chdir("/net/gcs/98/9856523/public_html");
+	getline(cin, method, ' ');
+	getline(cin, request, ' ');
+	
+	if (method == "GET") {
+		istringstream iss(request);
+		string query_path, query_string;
+		getline(iss, query_path, '?');
+		getline(iss, query_string);
+		
+		struct stat q_stat;
+		
+		if(stat((http_path+query_path).c_str(), &q_stat) <0 )
+		{
+			cout << "HTTP/1.1 404 Not Found\n";
+			cout << "Content-type: text/html\n\n";
+			cout << "<html><head></head><body><h1>404 Not Found</h1></body></html>\n";
+			return 0;
 		}
-		if (arglist.size()>0) {
-			if (pipes.find(MAX_PIPE + cmdNO) != pipes.end()) {
-				read_fd = pipes[MAX_PIPE + cmdNO];
-			}
-			if (file_fd >= 0) {
-				write_fd = file_fd;
-			}
-			myexec(arglist, cmdNO,read_fd, write_fd);
-			if (file_fd >= 0) {
-				close(file_fd);
-			}
+		
+		if (query_path.substr(query_path.size()-4, 4) == ".cgi") {
+			int found = query_path.find_last_of("/");
+			chdir(query_path.substr(1, found-1).c_str());
+			write(1,"HTTP/1.1 200 OK\n", 16);
+			setenv("REQUEST_METHOD", method.c_str(), 1);
+			setenv("QUERY_STRING", query_string.c_str(), 1);
 			
+			char** args = new char*[2];
+			
+			args[0] = new char[query_path.substr(found).size()];
+			strcpy(args[0], query_path.substr(found).c_str());
+			args[1] = 0;
+			execvp(args[0], args);
+			
+			return 0;
 		}
 		
-//		cout << "% ";
-//		cout.flush();
+			
 		
+		cout << "HTTP/1.1 200 OK\n";
 		
+		cout << "Content-type: text/html\n\n";
+		ifstream ifs( (http_path+query_path).c_str() );
+		
+		string s;
+		while ( getline(ifs, s, '\0') ) {
+			cout << s;
+		}
+	
 	}
-	
-	
-	write(3, "\n client connection closed\n", 27);
-	
+	else {
+		cout << "HTTP/1.1 501 Not Implemented\n";
+		cout << "Content-type: text/html\n\n";
+		cout << "<html><head></head><body><h1>501 Not Implemented</h1><BR>Method not supported."
+			<< " Only 'GET' is supported.</body></html>\n";
+	}
+
+		
 	return 0;
+
+
+	
 }

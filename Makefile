@@ -1,10 +1,10 @@
-all: server mysh client
+all: server mysh
 
 server:
 	g++ -g server.cpp -o $@
 	
 mysh:
-	g++ -g mysh.cpp -o $@
+	g++ -g http_server.cpp -o $@
 	
 client:
 	rm -Rf ras
