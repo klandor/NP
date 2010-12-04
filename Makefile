@@ -14,5 +14,10 @@ client:
 	g++ -o ras/bin/number number.cpp
 	g++ -o ras/bin/removetag removetag.cpp
 	cp /bin/ls /bin/cat ras/bin/
-	
-.PHONY: server mysh client
+
+push:
+	git push github hw3-2
+
+pull:
+	git pull github hw3-2
+.PHONY: server mysh client push pull
