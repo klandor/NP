@@ -1,9 +1,9 @@
-all: server mysh
+all: server my_httpd
 
 server:
 	g++ -g server.cpp -o $@
 	
-mysh:
+my_httpd:
 	g++ -g http_server.cpp -o $@
 	
 client:
@@ -20,4 +20,4 @@ push:
 
 pull:
 	git pull github hw3-2
-.PHONY: server mysh client push pull
+.PHONY: server my_httpd client push pull

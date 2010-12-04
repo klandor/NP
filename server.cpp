@@ -17,7 +17,7 @@ int main (int argc, char * const argv[]) {
 
 	struct sockaddr_in ServerAddress;
 	ServerAddress.sin_family = AF_INET;
-	ServerAddress.sin_port = htons(56523);
+	ServerAddress.sin_port = htons(56524);
 	ServerAddress.sin_addr.s_addr = INADDR_ANY;
 	memset(&ServerAddress.sin_zero, 0, sizeof ServerAddress.sin_zero);
 	const int on=1;
@@ -60,7 +60,7 @@ int main (int argc, char * const argv[]) {
 			
 			close(tmp);
 			close(ServerSocket);
-			char command[] = "./mysh";
+			char command[] = "my_httpd";
 			
 			char * args[2] = { command, 0};
 			
