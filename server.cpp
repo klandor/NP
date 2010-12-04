@@ -187,6 +187,8 @@ int main (int argc, char * const argv[]) {
 				free_client_no.erase(free_client_no.begin());
 				cout << "Client " << c.no << " just entered.\n";
 				broadcast("*** User '(no name)' entered from " + c.ip +". ***\n");
+				write(tmp, "% ", 2);
+				
 			}
 			
 			//client_no.insert(tmp);
@@ -398,6 +400,8 @@ int clientd::exec_line(string line){
 		}
 		
 	}
+	
+	
 	return 0;
 }
 
@@ -419,10 +423,11 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		FD_CLR(fd, &afds);
 		close(fd);
 		free_client_no.insert(no);
+		return 0;
 		//clients.erase(clients.find(no)); // taken care outside
 	}
 	
-	if (arglist[0] == "setenv") {
+	else if (arglist[0] == "setenv") {
 		if (arglist[1] == "PATH") {
 			path = arglist[2];
 		}
@@ -432,12 +437,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 
 		//setenv(arglist[1].c_str(), arglist[2].c_str(), 1);
-		arglist.clear();
+			
 		clearpipe(cmdNO);
-		return 0;
+		
 	}
 	
-	if (arglist[0] == "printenv") {
+	else if (arglist[0] == "printenv") {
 		//string s = getenv(arglist[1].c_str());
 		string s = arglist[1] + "=" + path + "\n";
 		if (write_fd < 0) {
@@ -453,12 +458,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 			string s = arglist[1] + "=" + path + "\n";
 			write(write_fd, s.c_str(), s.size());
 		}
-		arglist.clear();
+		//arglist.clear();
 		clearpipe(cmdNO);
-		return 0;
+		//return 0;
 	}
 	
-	if (arglist[0] == "who"){
+	else if (arglist[0] == "who"){
 		ostringstream oss;
 		for(map<int, clientd>::iterator i = clients.begin(); i!=clients.end(); i++)
 		{
@@ -474,12 +479,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		
 		write(fd, s.c_str(), s.size());
 		
-		arglist.clear();
+		//arglist.clear();
 		clearpipe(cmdNO);
-		return 0;
+		//return 0;
 	}
 	
-	if (arglist[0] == "name"){
+	else if (arglist[0] == "name"){
 		if (arglist.size() == 1) {
 			string s = "Usage: name new_name\n";
 			write(fd, s.c_str(), s.size());
@@ -494,12 +499,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 
 		
-		arglist.clear();
+		//arglist.clear();
 		clearpipe(cmdNO);
-		return 0;
+		//return 0;
 	}
 	
-	if (arglist[0] == "yell"){
+	else if (arglist[0] == "yell"){
 		if (arglist.size() == 1) {
 			string s = "Usage: yell <message>\n";
 			write(fd, s.c_str(), s.size());
@@ -514,12 +519,12 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 		
 		
-		arglist.clear();
+		//arglist.clear();
 		clearpipe(cmdNO);
-		return 0;
+		//return 0;
 	}
 	
-	if (arglist[0] == "tell"){
+	else if (arglist[0] == "tell"){
 		if (arglist.size() <= 2) {
 			string s = "Usage: tell <user_id#> <message>\n";
 			write(fd, s.c_str(), s.size());
@@ -545,73 +550,74 @@ int clientd::myexec(vector<string> &arglist, int &new_cmdNO, int read_fd, int wr
 		}
 		
 		
-		arglist.clear();
+		//arglist.clear();
 		clearpipe(cmdNO);
-		return 0;
-	}
+		//return 0;
+	}//end special commands
 	
-	//end special commands
-	
-	// setup argument list for child process
-	char **args = new char*[arglist.size()+1];
-	
-	for (int i=0; i<arglist.size(); i++) {
-		args[i] = new char[arglist[i].size()+1];
-		strcpy(args[i], arglist[i].c_str());
-	}
-	args[arglist.size()] = 0;
-	
-	// forking
-	int cpid =fork();
-	if (cpid>0) {
-		// clear args
+	else // regular command
+	{
+		// setup argument list for child process
+		char **args = new char*[arglist.size()+1];
+		
 		for (int i=0; i<arglist.size(); i++) {
-			delete [] args[i]; 
+			args[i] = new char[arglist[i].size()+1];
+			strcpy(args[i], arglist[i].c_str());
 		}
-		delete [] args;
+		args[arglist.size()] = 0;
 		
-		clearpipe(cmdNO);
-		while(wait(0)!=cpid); // wait for the child
-	}
-	else {
-		
-		if(chdir("ras/")<0)
-			perror("chdir");
-		
-		int r = setenv("PATH", path.c_str(), 1);
-		if( r < 0)
-			cerr << "setenv FAIL!\n";
-		
-		if (read_fd >=0) {
-			dup2(read_fd, 0);
+		// forking
+		int cpid =fork();
+		if (cpid>0) {
+			// clear args
+			for (int i=0; i<arglist.size(); i++) {
+				delete [] args[i]; 
+			}
+			delete [] args;
+			
+			clearpipe(cmdNO);
+			while(wait(0)!=cpid); // wait for the child
 		}
 		else {
-			dup2(fd, 0);
-		}
+			
+			if(chdir("ras/")<0)
+				perror("chdir");
+			
+			int r = setenv("PATH", path.c_str(), 1);
+			if( r < 0)
+				cerr << "setenv FAIL!\n";
+			
+			if (read_fd >=0) {
+				dup2(read_fd, 0);
+			}
+			else {
+				dup2(fd, 0);
+			}
 
-		if (write_fd >=0) {
-			dup2(write_fd, 1);
-		}
-		else {
-			dup2(fd, 1);
-		}
+			if (write_fd >=0) {
+				dup2(write_fd, 1);
+			}
+			else {
+				dup2(fd, 1);
+			}
 
-		
-		for(map<int,int>::iterator i = pipe_queue.begin(); i != pipe_queue.end(); i++)
-			close( i->second);
-		
-		execvp(args[0], args);
-		//cerr <<"Unknown Command: "<< args[0] << endl;
-		//cerr << "errno: " << errno << endl; 
-		write(fd, "Unknown Command: ", 17);
-		write(fd, args[0], strlen(args[0]) );
-		write(fd, "\n", 1);
-		exit(-1);
+			
+			for(map<int,int>::iterator i = pipe_queue.begin(); i != pipe_queue.end(); i++)
+				close( i->second);
+			
+			execvp(args[0], args);
+			//cerr <<"Unknown Command: "<< args[0] << endl;
+			//cerr << "errno: " << errno << endl; 
+			write(fd, "Unknown Command: ", 17);
+			write(fd, args[0], strlen(args[0]) );
+			write(fd, "\n", 1);
+			exit(-1);
+		}
 	}
 	
 	arglist.clear();	
 	
-	
+	write(fd, "% ", 2);
 	return 0;
 }
 
