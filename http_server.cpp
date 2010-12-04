@@ -142,7 +142,7 @@ int main() {
 		
 		struct stat q_stat;
 		
-		if(stat((http_path+query_path).c_str(), &q_stat) <0 )
+		if(stat( query_path.c_str()+1 , &q_stat) <0 )
 		{
 			cout << "HTTP/1.1 404 Not Found\n";
 			cout << "Content-type: text/html\n\n";
@@ -172,7 +172,7 @@ int main() {
 		cout << "HTTP/1.1 200 OK\n";
 		
 		cout << "Content-type: text/html\n\n";
-		ifstream ifs( (http_path+query_path).c_str() );
+		ifstream ifs( query_path.c_str()+1  );
 		
 		string s;
 		while ( getline(ifs, s, '\0') ) {
