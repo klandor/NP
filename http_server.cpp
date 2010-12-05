@@ -161,7 +161,7 @@ int main() {
 			char** args = new char*[2];
 			
 			args[0] = new char[query_path.size()];
-			strcpy(args[0], query_path.c_str()+1);
+			strcpy(args[0], ("./"+query_path.substr(found+1)).c_str());
 			args[1] = 0;
 			execvp(args[0], args);
 			
