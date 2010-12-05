@@ -144,6 +144,7 @@ int main() {
 		
 		if(stat( query_path.c_str()+1 , &q_stat) <0 )
 		{
+			perror(("stat: "+query_path).c_str());
 			cout << "HTTP/1.1 404 Not Found\n";
 			cout << "Content-type: text/html\n\n";
 			cout << "<html><head></head><body><h1>404 Not Found</h1></body></html>\n";
@@ -159,12 +160,14 @@ int main() {
 			
 			char** args = new char*[2];
 			
-			args[0] = new char[query_path.substr(found).size()];
-			strcpy(args[0], query_path.substr(found).c_str());
+			args[0] = new char[query_path.size()];
+			strcpy(args[0], query_path.c_str()+1);
 			args[1] = 0;
 			execvp(args[0], args);
 			
-			return 0;
+			perror("execvp");
+			
+			exit(-1);
 		}
 		
 			

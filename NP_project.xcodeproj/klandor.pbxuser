@@ -8,7 +8,7 @@
 			8DD76F620486A84900D96B5E /* NP_project */,
 		);
 		breakpoints = (
-			8517C1A2126A04AE003C1095 /* http_server.cpp:193 */,
+			8517C1A2126A04AE003C1095 /* http_server.cpp:196 */,
 		);
 		codeSenseManager = 85EBB1F2125EF072009A35D9 /* Code sense */;
 		executables = (
@@ -117,6 +117,11 @@
 			854472C512AAA6170026DA2E /* PBXTextBookmark */ = 854472C512AAA6170026DA2E /* PBXTextBookmark */;
 			854472C612AAA6170026DA2E /* PBXTextBookmark */ = 854472C612AAA6170026DA2E /* PBXTextBookmark */;
 			854472C712AAA6170026DA2E /* PBXTextBookmark */ = 854472C712AAA6170026DA2E /* PBXTextBookmark */;
+			854472C812AB22650026DA2E /* PBXTextBookmark */ = 854472C812AB22650026DA2E /* PBXTextBookmark */;
+			854472C912AB22650026DA2E /* PBXTextBookmark */ = 854472C912AB22650026DA2E /* PBXTextBookmark */;
+			854472CA12AB22650026DA2E /* PBXTextBookmark */ = 854472CA12AB22650026DA2E /* PBXTextBookmark */;
+			854472CB12AB22AA0026DA2E /* PBXTextBookmark */ = 854472CB12AB22AA0026DA2E /* PBXTextBookmark */;
+			854472CE12AB23640026DA2E /* PBXTextBookmark */ = 854472CE12AB23640026DA2E /* PBXTextBookmark */;
 			85730E0312744CCD00609F2C = 85730E0312744CCD00609F2C /* PBXTextBookmark */;
 		};
 		sourceControlManager = 85EBB1F1125EF072009A35D9 /* Source Control */;
@@ -125,9 +130,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* server.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {614, 1144}}";
+			sepNavIntBoundsRect = "{{0, 0}, {614, 1170}}";
 			sepNavSelRange = "{1312, 0}";
-			sepNavVisRange = "{1198, 478}";
+			sepNavVisRange = "{511, 691}";
 		};
 	};
 	8504D93B12793C5600B07F5B /* PBXTextBookmark */ = {
@@ -149,7 +154,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "mysh.cpp: 214";
 		rLen = 0;
-		rLoc = 4204;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 748;
 		vrLoc = 3586;
@@ -159,7 +164,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "mysh.cpp: 223";
 		rLen = 0;
-		rLoc = 4204;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 716;
 		vrLoc = 3586;
@@ -169,20 +174,20 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "mysh.cpp: 206";
 		rLen = 0;
-		rLoc = 4204;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 3703;
 	};
 	8517C06E1268A7F3003C1095 /* http_server.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {684, 2496}}";
-			sepNavSelRange = "{3854, 0}";
-			sepNavVisRange = "{2526, 742}";
+			sepNavIntBoundsRect = "{{0, 0}, {614, 2522}}";
+			sepNavSelRange = "{3060, 0}";
+			sepNavVisRange = "{2670, 914}";
 			sepNavWindowFrame = "{{4, 27}, {1220, 751}}";
 		};
 	};
-	8517C1A2126A04AE003C1095 /* http_server.cpp:193 */ = {
+	8517C1A2126A04AE003C1095 /* http_server.cpp:196 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -194,7 +199,7 @@
 		functionName = "main()";
 		hitCount = 2;
 		ignoreCount = 0;
-		lineNumber = 193;
+		lineNumber = 196;
 		location = NP_project;
 		modificationTime = 308939530.473964;
 		originalNumberOfMultipleMatches = 1;
@@ -239,7 +244,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 216";
 		rLen = 0;
-		rLoc = 4204;
+		rLoc = 4248;
 		rType = 0;
 		vrLen = 806;
 		vrLoc = 3582;
@@ -249,7 +254,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 134";
 		rLen = 0;
-		rLoc = 4187;
+		rLoc = 4231;
 		rType = 0;
 		vrLen = 483;
 		vrLoc = 2477;
@@ -259,7 +264,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 138";
 		rLen = 0;
-		rLoc = 3934;
+		rLoc = 3978;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 2477;
@@ -269,7 +274,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 138";
 		rLen = 0;
-		rLoc = 3934;
+		rLoc = 3978;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 2477;
@@ -329,7 +334,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 4116;
+		rLoc = 4160;
 		rType = 0;
 		vrLen = 594;
 		vrLoc = 2477;
@@ -339,7 +344,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 4160;
+		rLoc = 4204;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 2477;
@@ -349,7 +354,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 4160;
+		rLoc = 4204;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 2477;
@@ -359,7 +364,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 4104;
+		rLoc = 4148;
 		rType = 0;
 		vrLen = 614;
 		vrLoc = 2477;
@@ -369,7 +374,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 138";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 2477;
@@ -379,7 +384,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 138";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 2477;
@@ -419,7 +424,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 138";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 609;
 		vrLoc = 2477;
@@ -439,7 +444,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 4095;
+		rLoc = 4139;
 		rType = 0;
 		vrLen = 621;
 		vrLoc = 2477;
@@ -449,7 +454,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 144";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 751;
 		vrLoc = 2477;
@@ -459,7 +464,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 756;
 		vrLoc = 2477;
@@ -469,7 +474,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 596;
 		vrLoc = 2189;
@@ -489,7 +494,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 144";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 812;
 		vrLoc = 2626;
@@ -538,7 +543,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 143";
-		rLen = 237;
+		rLen = 280;
 		rLoc = 2967;
 		rType = 0;
 		vrLen = 756;
@@ -549,7 +554,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 166";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 737;
 		vrLoc = 2797;
@@ -559,7 +564,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 164";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 710;
 		vrLoc = 2797;
@@ -569,7 +574,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 164";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 737;
 		vrLoc = 2797;
@@ -579,7 +584,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 164";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 744;
 		vrLoc = 2797;
@@ -589,7 +594,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 164";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 750;
 		vrLoc = 2797;
@@ -599,7 +604,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 148";
 		rLen = 0;
-		rLoc = 3140;
+		rLoc = 3183;
 		rType = 0;
 		vrLen = 784;
 		vrLoc = 2761;
@@ -609,7 +614,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 157";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 867;
 		vrLoc = 2761;
@@ -619,7 +624,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 147";
 		rLen = 0;
-		rLoc = 3096;
+		rLoc = 3139;
 		rType = 0;
 		vrLen = 868;
 		vrLoc = 2761;
@@ -629,7 +634,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 154";
 		rLen = 0;
-		rLoc = 3737;
+		rLoc = 3781;
 		rType = 0;
 		vrLen = 900;
 		vrLoc = 2948;
@@ -639,7 +644,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 148";
 		rLen = 0;
-		rLoc = 3195;
+		rLoc = 3238;
 		rType = 0;
 		vrLen = 864;
 		vrLoc = 2764;
@@ -649,7 +654,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 153";
 		rLen = 0;
-		rLoc = 3733;
+		rLoc = 3777;
 		rType = 0;
 		vrLen = 838;
 		vrLoc = 2761;
@@ -659,7 +664,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 153";
 		rLen = 0;
-		rLoc = 3733;
+		rLoc = 3777;
 		rType = 0;
 		vrLen = 862;
 		vrLoc = 2761;
@@ -669,7 +674,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 153";
 		rLen = 0;
-		rLoc = 3449;
+		rLoc = 3492;
 		rType = 0;
 		vrLen = 914;
 		vrLoc = 3054;
@@ -679,7 +684,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 165";
 		rLen = 0;
-		rLoc = 3906;
+		rLoc = 3950;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 3014;
@@ -689,7 +694,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 154";
 		rLen = 0;
-		rLoc = 3427;
+		rLoc = 3470;
 		rType = 0;
 		vrLen = 794;
 		vrLoc = 2764;
@@ -699,7 +704,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 157";
 		rLen = 0;
-		rLoc = 3512;
+		rLoc = 3555;
 		rType = 0;
 		vrLen = 803;
 		vrLoc = 2764;
@@ -709,7 +714,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 158";
 		rLen = 0;
-		rLoc = 3700;
+		rLoc = 3717;
 		rType = 0;
 		vrLen = 775;
 		vrLoc = 2761;
@@ -719,7 +724,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 160";
 		rLen = 0;
-		rLoc = 3656;
+		rLoc = 3673;
 		rType = 0;
 		vrLen = 783;
 		vrLoc = 3294;
@@ -729,7 +734,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 153";
 		rLen = 0;
-		rLoc = 3374;
+		rLoc = 3417;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 2764;
@@ -739,7 +744,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 163";
 		rLen = 0;
-		rLoc = 3646;
+		rLoc = 3662;
 		rType = 0;
 		vrLen = 696;
 		vrLoc = 2267;
@@ -759,7 +764,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 174";
 		rLen = 0;
-		rLoc = 3787;
+		rLoc = 3831;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 2871;
@@ -909,7 +914,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 174";
 		rLen = 0;
-		rLoc = 3787;
+		rLoc = 3831;
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 2871;
@@ -919,10 +924,60 @@
 		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
 		name = "http_server.cpp: 175";
 		rLen = 0;
-		rLoc = 3854;
+		rLoc = 3898;
 		rType = 0;
 		vrLen = 742;
 		vrLoc = 2526;
+	};
+	854472C812AB22650026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* server.cpp */;
+		name = "server.cpp: 62";
+		rLen = 0;
+		rLoc = 1312;
+		rType = 0;
+		vrLen = 691;
+		vrLoc = 511;
+	};
+	854472C912AB22650026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
+		name = "http_server.cpp: 175";
+		rLen = 0;
+		rLoc = 3898;
+		rType = 0;
+		vrLen = 683;
+		vrLoc = 2500;
+	};
+	854472CA12AB22650026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
+		name = "http_server.cpp: 167";
+		rLen = 0;
+		rLoc = 3744;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 3021;
+	};
+	854472CB12AB22AA0026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
+		name = "http_server.cpp: 147";
+		rLen = 0;
+		rLoc = 3062;
+		rType = 0;
+		vrLen = 893;
+		vrLoc = 2673;
+	};
+	854472CE12AB23640026DA2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8517C06E1268A7F3003C1095 /* http_server.cpp */;
+		name = "http_server.cpp: 147";
+		rLen = 0;
+		rLoc = 3060;
+		rType = 0;
+		vrLen = 914;
+		vrLoc = 2670;
 	};
 	85730E0312744CCD00609F2C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
