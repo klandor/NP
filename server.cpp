@@ -189,7 +189,7 @@ int main (int argc, char * const argv[]) {
 				free_client_no.erase(free_client_no.begin());
 				cout << "Client " << c.no << " just entered.\n";
 				broadcast("*** User '(no name)' entered from " + c.ip +". ***\n");
-				write(tmp, "% \n", 3);
+				write(tmp, "% ", 2);
 				
 			}
 			
@@ -218,7 +218,7 @@ int main (int argc, char * const argv[]) {
 				}
 				t[len] = 0;
 				i->second.exec_line(string(t));
-				write(i->second.fd, "% \n", 3);
+				write(i->second.fd, "% ", 2);
 				//break;
 				if (!FD_ISSET(i->second.fd, &afds)) {
 					int no = i->second.no;
