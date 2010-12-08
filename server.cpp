@@ -172,7 +172,9 @@ int main (int argc, char * const argv[]) {
 		
 		
 		if (FD_ISSET(ServerSocket, &rfds)) {
+			
 			//int tmp = -1; 
+			sleep(5);
 			int tmp=accept(ServerSocket,(struct sockaddr *)& cln,&sLen);
 			if(tmp<0){
 				perror("accept()");
