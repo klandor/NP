@@ -3,8 +3,8 @@ all: server mysh client
 server:
 	g++ -g server.cpp -o $@
 	
-mysh:
-	g++ -g mysh.cpp -o $@
+socks:
+	g++ -g socks.cpp -o $@
 	
 client:
 	rm -Rf ras
@@ -14,5 +14,10 @@ client:
 	g++ -o ras/bin/number number.cpp
 	g++ -o ras/bin/removetag removetag.cpp
 	cp /bin/ls /bin/cat ras/bin/
-	
-.PHONY: server mysh client
+
+push:
+	git push github hw4
+pull:
+	git pull github hw4
+
+.PHONY: server mysh client push pull

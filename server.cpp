@@ -60,7 +60,7 @@ int main (int argc, char * const argv[]) {
 			
 			close(tmp);
 			close(ServerSocket);
-			char command[] = "./mysh";
+			char command[] = "./socks";
 			
 			char * args[2] = { command, 0};
 			

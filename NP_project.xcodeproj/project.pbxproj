@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8517C20F126AA74A003C1095 /* mysh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8517C06E1268A7F3003C1095 /* mysh.cpp */; };
+		8517C20F126AA74A003C1095 /* socks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8517C06E1268A7F3003C1095 /* socks.cpp */; };
 		8DD76F6A0486A84900D96B5E /* NP_project.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* NP_project.1 */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
-		8517C06E1268A7F3003C1095 /* mysh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mysh.cpp; sourceTree = "<group>"; };
+		8517C06E1268A7F3003C1095 /* socks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socks.cpp; sourceTree = "<group>"; };
 		8517C1ED126A1667003C1095 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8517C1EE126A18D7003C1095 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* NP_project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NP_project; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +59,7 @@
 			children = (
 				8517C1EE126A18D7003C1095 /* client.c */,
 				08FB7796FE84155DC02AAC07 /* server.cpp */,
-				8517C06E1268A7F3003C1095 /* mysh.cpp */,
+				8517C06E1268A7F3003C1095 /* socks.cpp */,
 				8517C1ED126A1667003C1095 /* Makefile */,
 			);
 			name = Source;
@@ -109,7 +109,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "NP_project" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* NP_project */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -124,7 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8517C20F126AA74A003C1095 /* mysh.cpp in Sources */,
+				8517C20F126AA74A003C1095 /* socks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
