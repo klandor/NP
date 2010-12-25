@@ -49,7 +49,7 @@ int main() {
 		}
 		
 		bool t=false;
-		for (int i=0; i< read_size; i++) {
+		for (int i=8; i< read_size; i++) {
 			if (rbuff[i] == 0) {
 				t=true;
 			}
@@ -60,8 +60,8 @@ int main() {
 		}
 	}
 	
-	if (read_size < 9 ) ) {
-		cerr << "protocol error." << endl;
+	if (read_size < 9 )  {
+		cerr << "protocol error: "<< read_size << "-byte header." << endl;
 		socks_fail();
 	}
 	

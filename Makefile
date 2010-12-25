@@ -20,4 +20,4 @@ push:
 pull:
 	git pull github hw4
 
-.PHONY: server mysh client push pull
+.PHONY: server mysh client push pull socks
