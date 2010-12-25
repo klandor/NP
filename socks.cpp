@@ -129,7 +129,7 @@ int main() {
 			break;
 		}
 		
-		if(select(s+1, &fds, 0, 0, 0) != -1)
+		if(select(s+1, &fds, 0, 0, 0) == -1)
 			break;
 		
 		
