@@ -91,8 +91,8 @@ int main() {
 	struct sockaddr_in client_sin;
 	bzero(&client_sin, sizeof(client_sin));
 	client_sin.sin_family = AF_INET;
-	client_sin.sin_addr = *((struct in_addr *)rbuff+4);
-	client_sin.sin_port = *((uint16_t *)rbuff +2);
+	client_sin.sin_addr = *((struct in_addr *)(rbuff+4));
+	client_sin.sin_port = *((uint16_t *)(rbuff +2));
 	
 	cerr << "Connecting to " <<  inet_ntoa(client_sin.sin_addr) << endl;
 	
@@ -102,6 +102,10 @@ int main() {
 		perror("connect");
 		socks_fail();
 	}
+	
+	char ac[8] = {0, 0x5a};
+	
+	write()
 	
 	cerr << "\nclient connection closed" << endl;
 	
