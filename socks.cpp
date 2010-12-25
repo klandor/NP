@@ -21,6 +21,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <arpa/inet.h>
 using namespace std;
 
 
@@ -48,6 +49,11 @@ int main() {
 			read_size += t;
 		}
 		
+		if ( rbuff[0] != 0x04 ) {
+			cerr << "version not matched." << endl;
+			socks_fail();
+		}
+		
 		bool t=false;
 		for (int i=8; i< read_size; i++) {
 			if (rbuff[i] == 0) {
@@ -65,10 +71,7 @@ int main() {
 		socks_fail();
 	}
 	
-	if ( rbuff[0] != 0x04 ) {
-		cerr << "version not matched." << endl;
-		socks_fail();
-	}
+	
 	
 	if ( (rbuff[1]!=0x01 && rbuff[1]!=0x02) ) {
 		cerr << "wrong command." << endl;
@@ -83,12 +86,15 @@ int main() {
 	}
 	
 	
+	
 	int s = socket(AF_INET,SOCK_STREAM,0);
 	struct sockaddr_in client_sin;
 	bzero(&client_sin, sizeof(client_sin));
 	client_sin.sin_family = AF_INET;
 	client_sin.sin_addr = *((struct in_addr *)rbuff+4);
 	client_sin.sin_port = *((uint16_t *)rbuff +2);
+	
+	cerr << "Connecting to " <<  inet_ntoa(client_sin.sin_addr) << endl;
 	
 	if(connect(s,(struct sockaddr *)&client_sin,
 			   sizeof(client_sin)) == -1)
@@ -97,7 +103,7 @@ int main() {
 		socks_fail();
 	}
 	
-	//write(3, "\n client connection closed\n", 27);
+	cerr << "\nclient connection closed" << endl;
 	
 	return 0;
 }
