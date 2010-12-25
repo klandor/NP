@@ -105,7 +105,7 @@ int main() {
 	
 	char ac[8] = {0, 0x5a};
 	
-	write()
+	write(1, ac, 8);
 	
 	cerr << "\nclient connection closed" << endl;
 	
