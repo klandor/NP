@@ -56,7 +56,7 @@ int main (int argc, char * const argv[]) {
 
 			dup2(tmp, 0);
 			dup2(tmp, 1);
-			dup2(tmp, 2);
+			//dup2(tmp, 2);
 			
 			close(tmp);
 			close(ServerSocket);

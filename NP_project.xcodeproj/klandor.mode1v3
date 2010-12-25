@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>85632D4512C20834006ED738</string>
+						<string>85632D5512C398E6006ED738</string>
 						<key>history</key>
 						<array>
 							<string>85632D4412C20834006ED738</string>
@@ -311,7 +311,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>4</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -354,7 +354,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>server.cpp</string>
+								<string>socks.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -362,17 +362,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>server.cpp</string>
+										<string>socks.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>85632D4312C20834006ED738</string>
+										<string>85632D5412C398E6006ED738</string>
 										<key>history</key>
 										<array>
 											<string>852C23D2127150A200E84C21</string>
-											<string>85632D4012C20834006ED738</string>
 											<string>85632D4112C20834006ED738</string>
-											<string>85632D4212C20834006ED738</string>
+											<string>85632D4A12C2098E006ED738</string>
+											<string>85632D4B12C2098E006ED738</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
