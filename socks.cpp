@@ -160,6 +160,10 @@ int main() {
 				read_size -= t;
 			}
 			
+			if (c_off) {
+				shutdown(s, SHUT_WR);
+			}
+			
 		}
 		
 		
@@ -189,7 +193,9 @@ int main() {
 				}
 				write_size -= t;
 			}
-			
+			if (s_off) {
+				shutdown(1, SHUT_WR);
+			}
 		}
 		
 		fds = rfds;
