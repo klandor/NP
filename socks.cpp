@@ -60,10 +60,22 @@ int main() {
 		}
 	}
 	
-	if (read_size < 9 || rbuff[0] != 4 || (rbuff[1]!=1 && rbuff[1]!=2) ) {
+	if (read_size < 9 ) ) {
 		cerr << "protocol error." << endl;
 		socks_fail();
 	}
+	
+	if ( rbuff[0] != 0x04 ) {
+		cerr << "version not matched." << endl;
+		socks_fail();
+	}
+	
+	if ( (rbuff[1]!=0x01 && rbuff[1]!=0x02) ) {
+		cerr << "wrong command." << endl;
+		socks_fail();
+	}
+	
+	
 	
 	if (rbuff[4] == 0 && rbuff[5] == 0 && rbuff[6] == 0)
 	{
