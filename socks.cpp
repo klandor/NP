@@ -135,6 +135,7 @@ int main() {
 	
 	if(rbuff[1]==0x01){ // connect
 	
+		cerr << "CD CONNECT"; 
 	
 		s = socket(AF_INET,SOCK_STREAM,0);
 		struct sockaddr_in client_sin;
@@ -143,7 +144,7 @@ int main() {
 		client_sin.sin_addr = *((struct in_addr *)(rbuff+4));
 		client_sin.sin_port = *((uint16_t *)(rbuff +2));
 		
-		cerr << "Connecting to " <<  inet_ntoa(client_sin.sin_addr) <<":"<<ntohs(client_sin.sin_port)<<  endl;
+		cerr << " to " <<  inet_ntoa(client_sin.sin_addr) <<":"<<ntohs(client_sin.sin_port)<<  endl;
 		
 		if(connect(s,(struct sockaddr *)&client_sin,
 				   sizeof(client_sin)) == -1)
@@ -241,7 +242,7 @@ int main() {
 			}
 			
 			int write_out = 0;
-			while (write_out -  write_size >0) {
+			while ( write_size - write_out >0) {
 				
 				
 				t = write(1, wbuff+write_out, write_size - write_out);
