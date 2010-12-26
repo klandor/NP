@@ -202,7 +202,7 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>8504D94B1279E6F500B07F5B</string>
+				<string>85E2AA3112C7085E00C79812</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>socks.cpp</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
@@ -210,16 +210,16 @@
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>8504D94C1279E6F500B07F5B</string>
+						<string>85E2AA3212C7085E00C79812</string>
 						<key>PBXProjectModuleLabel</key>
 						<string>socks.cpp</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>85632D5512C398E6006ED738</string>
+						<string>85AABBCD12C7130C002A2937</string>
 						<key>history</key>
 						<array>
-							<string>85632D4412C20834006ED738</string>
+							<string>85E2AA3312C7085E00C79812</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -270,6 +270,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -311,7 +313,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -347,14 +349,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>socks.cpp</string>
+								<string>Makefile</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -362,17 +362,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>socks.cpp</string>
+										<string>Makefile</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>85632D5412C398E6006ED738</string>
+										<string>85AABBCC12C7130C002A2937</string>
 										<key>history</key>
 										<array>
 											<string>852C23D2127150A200E84C21</string>
-											<string>85632D4112C20834006ED738</string>
-											<string>85632D4A12C2098E006ED738</string>
-											<string>85632D4B12C2098E006ED738</string>
+											<string>85E2AA2B12C7085E00C79812</string>
+											<string>85E2AA2C12C7085E00C79812</string>
+											<string>85AABBA812C70E45002A2937</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -384,14 +384,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {653, 431}}</string>
+								<string>{{0, 0}, {653, 416}}</string>
 								<key>RubberWindowFrame</key>
 								<string>215 58 859 714 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>431pt</string>
+							<string>416pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -404,14 +404,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 436}, {653, 237}}</string>
+								<string>{{0, 421}, {653, 252}}</string>
 								<key>RubberWindowFrame</key>
 								<string>215 58 859 714 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>237pt</string>
+							<string>252pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -430,9 +430,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>85632D3612C207B0006ED738</string>
+				<string>85AABBAA12C70E45002A2937</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>85632D3712C207B0006ED738</string>
+				<string>85AABBAB12C70E45002A2937</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,8 +572,8 @@
 	<array>
 		<string>85EBB1F612601D7A009A35D9</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>8504D94B1279E6F500B07F5B</string>
 		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
+		<string>85E2AA3112C7085E00C79812</string>
 	</array>
 	<key>WindowString</key>
 	<string>215 58 859 714 0 0 1280 778 </string>
@@ -653,7 +653,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>85EBB1F612601D7A009A35D9</string>
-				<string>85632D3912C207B0006ED738</string>
+				<string>85AABBAD12C70E45002A2937</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -775,13 +775,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>85632D3A12C207B0006ED738</string>
+				<string>85AABBAE12C70E45002A2937</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>85632D3B12C207B0006ED738</string>
-				<string>85632D3C12C207B0006ED738</string>
-				<string>85632D3D12C207B0006ED738</string>
-				<string>85632D3E12C207B0006ED738</string>
-				<string>85632D3F12C207B0006ED738</string>
+				<string>85AABBAF12C70E45002A2937</string>
+				<string>85AABBB012C70E45002A2937</string>
+				<string>85AABBB112C70E45002A2937</string>
+				<string>85AABBB212C70E45002A2937</string>
+				<string>85AABBB312C70E45002A2937</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

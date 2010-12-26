@@ -37,10 +37,10 @@ void socks_fail(){
 int main() { 
 	signal(SIGCHLD, SIG_DFL);
 	char rbuff[BUFFER_SIZE], wbuff[BUFFER_SIZE];
-	int t, read_size=0, write_size=0, header_size;
+	int read_size=0, write_size=0, header_size;
 	while (1) {
 		
-		t = read(0, rbuff+read_size, BUFFER_SIZE-read_size);
+		int t = read(0, rbuff+read_size, BUFFER_SIZE-read_size);
 		if (t<0) {
 			perror("read");
 			exit(1);
@@ -54,16 +54,16 @@ int main() {
 			socks_fail();
 		}
 		
-		bool t=false;
+		bool tmp=false;
 		for (int i=8; i< read_size; i++) {
 			if (rbuff[i] == 0) {
-				t=true;
+				tmp=true;
 				header_size = i+1;
 				break;
 			}
 		}
 		
-		if (t) {
+		if (tmp) {
 			break;
 		}
 	}
@@ -75,14 +75,59 @@ int main() {
 	
 	
 	
-	if (rbuff[4] == 0 && rbuff[5] == 0 && rbuff[6] == 0)
+	if (rbuff[4] == 0 && rbuff[5] == 0 && rbuff[6] == 0 && rbuff[7] != 0)
 	{
 		// SOCKS 4a
+		cerr << "version 4a, hostname: " ;
+		int header2_size;
+		while (1) {
+			bool tmp=false;
+			for (int i=header_size; i< read_size; i++) {
+				if (rbuff[i] == 0) {
+					tmp=true;
+					header2_size = i+1;
+					break;
+				}
+			}
+			
+			if (tmp) {
+				break;
+			}
+			
+			int t = read(0, rbuff+read_size, BUFFER_SIZE-read_size);
+			if (t<0) {
+				perror("read");
+				exit(1);
+			}
+			else {
+				read_size += t;
+			}
+			
+//			if ( rbuff[0] != 0x04 ) {
+//				cerr << "version not matched." << endl;
+//				socks_fail();
+//			}
+		}
+		
+		cerr << rbuff+header_size << endl;
+		
+		
+		struct hostent *he = gethostbyname(rbuff+header_size);
+		
+		if (he == NULL) {
+			herror("gethostbyname");
+			socks_fail();
+		}
+		
+		//int listen_socket = socket(AF_INET,SOCK_STREAM,0);
+		memcpy(rbuff+4, he->h_addr, 4);
+		
+		
 	}
 	else {
-		if (header_size == read_size) {
-			read_size = 0;
-		}
+		// SOCKS 4
+		cerr << "version 4" << endl;
+
 	}
 
 	bool c_off = 0, s_off = 0;
@@ -117,6 +162,16 @@ int main() {
 		
 	}
 	
+	if (header_size == read_size) {
+		read_size = 0;
+	}
+	else {
+		// todo
+		cerr << "header shift." << endl;
+		memcpy(rbuff, rbuff+header_size, read_size-header_size);
+		read_size -= header_size;
+	}
+	
 	
 	fd_set rfds, fds;
 	FD_ZERO(&rfds);
@@ -148,17 +203,19 @@ int main() {
 					FD_CLR(0, &rfds);
 				}
 			}
-			
-			while (read_size >0) {
+			int write_out = 0;
+			while ( read_size - write_out >0) {
 				
 				
-				t = write(s, rbuff, read_size);
+				t = write(s, rbuff+ write_out, read_size - write_out);
 				if (t < 0) {
 					perror("write");
 					exit(1);
 				}
-				read_size -= t;
+				write_out += t;
 			}
+			
+			read_size = 0;
 			
 			if (c_off) {
 				shutdown(s, SHUT_WR);
@@ -183,16 +240,19 @@ int main() {
 				}
 			}
 			
-			while (write_size >0) {
+			int write_out = 0;
+			while (write_out -  write_size >0) {
 				
 				
-				t = write(1, wbuff, write_size);
+				t = write(1, wbuff+write_out, write_size - write_out);
 				if (t < 0) {
 					perror("write");
 					exit(1);
 				}
-				write_size -= t;
+				write_out += t;
 			}
+			
+			write_size = 0;
 			if (s_off) {
 				shutdown(1, SHUT_WR);
 			}
