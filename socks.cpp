@@ -209,8 +209,10 @@ int main() {
 		
 		if (ServerAddress.sin_addr.s_addr ==  *(in_addr_t*)(rbuff+4)  ) {
 			write(1, ac, 8); // second granted reply
+			cerr << " to " <<  inet_ntoa(ServerAddress.sin_addr) << endl;
 		}
 		else {
+			cerr << " failed." << endl;
 			socks_fail();
 		}
 		
