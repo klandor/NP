@@ -121,7 +121,7 @@ int main() {
 		
 		//int listen_socket = socket(AF_INET,SOCK_STREAM,0);
 		memcpy(rbuff+4, he->h_addr, 4);
-		
+		header_size = header2_size;
 		
 	}
 	else {
@@ -160,7 +160,62 @@ int main() {
 		
 	}
 	else { // bind
+		cerr << "CD BIND";
 		
+		int ServerSocket = socket(AF_INET,SOCK_STREAM,0);
+		if (ServerSocket <0) {
+			perror("socket");
+			socks_fail();
+		}
+		
+		struct sockaddr_in ServerAddress;
+		ServerAddress.sin_family = AF_INET;
+		ServerAddress.sin_port = htons(0);
+		ServerAddress.sin_addr.s_addr = INADDR_ANY;
+		memset(&ServerAddress.sin_zero, 0, sizeof ServerAddress.sin_zero);
+		const int on=1;
+		if( setsockopt(ServerSocket,SOL_SOCKET,SO_REUSEADDR,&on,sizeof(on)) <0 )
+		{
+			perror("setsockopt");
+			socks_fail();
+		}
+		
+		if(bind(ServerSocket,(struct sockaddr *)&ServerAddress,sizeof(ServerAddress))==-1)
+		{
+			perror("bind");
+			socks_fail();
+		}
+		
+		socklen_t socklen = sizeof(ServerAddress);
+		getsockname(ServerSocket, (struct sockaddr *)&ServerAddress, &socklen);
+		
+		if(listen(ServerSocket,10)==-1)
+		{
+			perror("listen");
+			socks_fail();
+		}
+		
+		char ac[8] = {0, 0x5a, 0, 0, 0, 0, 0, 0};
+		memcpy(ac+2, &(ServerAddress.sin_port), 2);
+		write(1, ac, 8); // first granted reply
+		
+		//int tmp = -1; 
+		socklen = sizeof(ServerAddress);
+		s=accept(ServerSocket,(struct sockaddr *)& ServerAddress,&socklen);
+		if(s==-1){
+			perror("accept");
+			socks_fail();
+		}
+		
+		if (ServerAddress.sin_addr.s_addr ==  *(in_addr_t*)(rbuff+4)  ) {
+			write(1, ac, 8); // second granted reply
+		}
+		else {
+			socks_fail();
+		}
+		
+		close(ServerSocket);
+
 	}
 	
 	if (header_size == read_size) {
