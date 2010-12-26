@@ -25,7 +25,7 @@
 using namespace std;
 
 
-#define BUFFER_SIZE 5000
+#define BUFFER_SIZE 100000
 
 void socks_fail(){
 	char buff[8] = {0, 0x5b};
@@ -224,10 +224,11 @@ int main() {
 		read_size = 0;
 	}
 	else {
-		// todo
-		cerr << "header shift." << endl;
+		
+		
 		memcpy(rbuff, rbuff+header_size, read_size-header_size);
 		read_size -= header_size;
+		cerr << "header shifted. read_size="<<  read_size<< endl;
 	}
 	
 	
