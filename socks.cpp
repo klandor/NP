@@ -109,7 +109,7 @@ int main() {
 //			}
 		}
 		
-		cerr << rbuff+header_size << endl;
+		cerr << rbuff+header_size ;
 		
 		
 		struct hostent *he = gethostbyname(rbuff+header_size);
@@ -126,16 +126,25 @@ int main() {
 	}
 	else {
 		// SOCKS 4
-		cerr << "version 4" << endl;
+		cerr << "version 4, IP: ";
+		struct in_addr ip;
+		ip.s_addr = *((unsigned long *)(rbuff+4));
+		cerr << inet_ntoa(ip) ;
 
 	}
+	// print Port
+	{
+		uint16_t port = ntohs(*((uint16_t*)(rbuff+2)));
+		cerr << ", PORT: " << port << endl;
+	}
+	
 
 	bool c_off = 0, s_off = 0;
 	int s;
 	
 	if(rbuff[1]==0x01){ // connect
 	
-		cerr << "CD CONNECT"; 
+		cerr << "CD CONNECT "; 
 	
 		s = socket(AF_INET,SOCK_STREAM,0);
 		struct sockaddr_in client_sin;
@@ -144,7 +153,7 @@ int main() {
 		client_sin.sin_addr = *((struct in_addr *)(rbuff+4));
 		client_sin.sin_port = *((uint16_t *)(rbuff +2));
 		
-		cerr << " to " <<  inet_ntoa(client_sin.sin_addr) <<":"<<ntohs(client_sin.sin_port)<<  endl;
+		//cerr << "to " <<  inet_ntoa(client_sin.sin_addr) <<":"<<ntohs(client_sin.sin_port)<<  endl;
 		
 		if(connect(s,(struct sockaddr *)&client_sin,
 				   sizeof(client_sin)) == -1)
@@ -152,6 +161,10 @@ int main() {
 			perror("connect");
 			socks_fail();
 		}
+		else {
+			cerr << "successed." << endl;
+		}
+
 		
 		char ac[8] = {0, 0x5a};
 		
@@ -160,7 +173,7 @@ int main() {
 		
 	}
 	else { // bind
-		cerr << "CD BIND";
+		cerr << "CD BIND ";
 		
 		int ServerSocket = socket(AF_INET,SOCK_STREAM,0);
 		if (ServerSocket <0) {
@@ -199,6 +212,8 @@ int main() {
 		memcpy(ac+2, &(ServerAddress.sin_port), 2);
 		write(1, ac, 8); // first granted reply
 		
+		
+		cerr << "listening..." << endl;
 		//int tmp = -1; 
 		socklen = sizeof(ServerAddress);
 		s=accept(ServerSocket,(struct sockaddr *)& ServerAddress,&socklen);
@@ -209,10 +224,10 @@ int main() {
 		
 		if (ServerAddress.sin_addr.s_addr ==  *(in_addr_t*)(rbuff+4)  ) {
 			write(1, ac, 8); // second granted reply
-			cerr << " to " <<  inet_ntoa(ServerAddress.sin_addr) << endl;
+			cerr << "Accepted successfully." << endl;
 		}
 		else {
-			cerr << " failed." << endl;
+			cerr << "Acception failed." << endl;
 			socks_fail();
 		}
 		

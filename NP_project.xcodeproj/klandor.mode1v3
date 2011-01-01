@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>85AABC1C12C73666002A2937</string>
+						<string>85AABC2212C7754C002A2937</string>
 						<key>history</key>
 						<array>
 							<string>85E2AA3312C7085E00C79812</string>
@@ -311,6 +311,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -346,12 +347,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>server.cpp</string>
+								<string>Makefile</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -359,17 +362,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>server.cpp</string>
+										<string>Makefile</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>85AABC1B12C73666002A2937</string>
+										<string>85AABC2112C7754C002A2937</string>
 										<key>history</key>
 										<array>
 											<string>852C23D2127150A200E84C21</string>
-											<string>85AABBD412C72A36002A2937</string>
 											<string>85AABC0D12C730DB002A2937</string>
-											<string>85AABC0E12C730DB002A2937</string>
+											<string>85AABC1D12C736C3002A2937</string>
+											<string>85AABC1E12C736C3002A2937</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -391,8 +394,6 @@
 							<string>416pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -571,11 +572,11 @@
 	<array>
 		<string>85AABBE012C72A85002A2937</string>
 		<string>85AABBE112C72A85002A2937</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>85EBB1F612601D7A009A35D9</string>
-		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>85E2AA3112C7085E00C79812</string>
+		<string>/Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/NP_project.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>215 58 859 714 0 0 1280 778 </string>
