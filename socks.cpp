@@ -208,7 +208,7 @@ int main() {
 			socks_fail();
 		}
 		
-		char ac[8] = {0, 0x5a, 0, 0, 0, 0, 0, 0};
+		char ac[8] = {0, 0x5a, 0, 0, 140, 113, 235, 168};
 		memcpy(ac+2, &(ServerAddress.sin_port), 2);
 		write(1, ac, 8); // first granted reply
 		
