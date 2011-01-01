@@ -213,7 +213,7 @@ int main() {
 		write(1, ac, 8); // first granted reply
 		
 		
-		cerr << "listening..." << endl;
+		cerr << "listening on port "<< ntohs(ServerAddress.sin_port) << endl;
 		//int tmp = -1; 
 		socklen = sizeof(ServerAddress);
 		s=accept(ServerSocket,(struct sockaddr *)& ServerAddress,&socklen);
