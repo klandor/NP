@@ -162,7 +162,7 @@ int main() {
 				for (int i=0; i<length; i++) {
 					int t;
 					iss >> t;
-					if(rbuff[4+i] != t)
+					if(rbuff[4+i] != (char)t)
 					{
 						ip_check = false;
 						break;

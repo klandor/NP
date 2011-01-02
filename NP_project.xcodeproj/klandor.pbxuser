@@ -61,24 +61,30 @@
 	};
 	8517C06E1268A7F3003C1095 /* socks.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1161, 4251}}";
-			sepNavSelRange = "{3555, 0}";
-			sepNavVisRange = "{2312, 1208}";
+			sepNavIntBoundsRect = "{{0, 0}, {1161, 5278}}";
+			sepNavSelRange = "{2693, 0}";
+			sepNavVisRange = "{2578, 942}";
 			sepNavWindowFrame = "{{15, 22}, {1220, 751}}";
 		};
 	};
 	8517C1ED126A1667003C1095 /* Makefile */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {592, 384}}";
+			sepNavIntBoundsRect = "{{0, 0}, {592, 376}}";
 			sepNavSelRange = "{11, 0}";
 			sepNavVisRange = "{0, 413}";
 		};
 	};
 	8517C1EE126A18D7003C1095 /* client.c */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.c;
+		name = client.c;
+		path = /Users/klandor/Dropbox/Courses/NetworkProgramming/NP_project/client.c;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {591, 2054}}";
+			sepNavIntBoundsRect = "{{0, 0}, {592, 2080}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{2390, 522}";
+			sepNavVisRange = "{2390, 476}";
 		};
 	};
 	852C23D2127150A200E84C21 /* PBXTextBookmark */ = {
@@ -91,12 +97,19 @@
 		vrLen = 522;
 		vrLoc = 2390;
 	};
+	852E52B212D05DE700FAE53A /* socks.conf */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {592, 376}}";
+			sepNavSelRange = "{39, 0}";
+			sepNavVisRange = "{0, 39}";
+		};
+	};
 	85AABC0D12C730DB002A2937 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8517C06E1268A7F3003C1095 /* socks.cpp */;
 		name = "socks.cpp: 212";
 		rLen = 0;
-		rLoc = 4537;
+		rLoc = 5842;
 		rType = 0;
 		vrLen = 694;
 		vrLoc = 3705;
@@ -136,7 +149,7 @@
 		fRef = 8517C06E1268A7F3003C1095 /* socks.cpp */;
 		name = "socks.cpp: 180";
 		rLen = 0;
-		rLoc = 3555;
+		rLoc = 4786;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 2312;

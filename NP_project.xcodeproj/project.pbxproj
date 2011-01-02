@@ -28,7 +28,7 @@
 		08FB7796FE84155DC02AAC07 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		8517C06E1268A7F3003C1095 /* socks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socks.cpp; sourceTree = "<group>"; };
 		8517C1ED126A1667003C1095 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		8517C1EE126A18D7003C1095 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
+		852E52B212D05DE700FAE53A /* socks.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = socks.conf; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* NP_project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NP_project; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* NP_project.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = NP_project.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,7 +57,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8517C1EE126A18D7003C1095 /* client.c */,
+				852E52B212D05DE700FAE53A /* socks.conf */,
 				08FB7796FE84155DC02AAC07 /* server.cpp */,
 				8517C06E1268A7F3003C1095 /* socks.cpp */,
 				8517C1ED126A1667003C1095 /* Makefile */,
