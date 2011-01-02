@@ -138,6 +138,59 @@ int main() {
 		cerr << ", PORT: " << port << endl;
 	}
 	
+	// check firewall 
+	{
+		ifstream ifs("socks.conf");
+		if(ifs.fail())
+		{
+			cerr << "socks.conf can not be read, all request permitted." << endl;
+		}
+		else {
+			string s;
+			while ( getline(ifs, s) ) {
+				istringstream iss(s);
+				char rule, cd;
+				iss >> rule >> cd;
+				
+				if((rbuff[1] == 1 && cd != 'c') || (rbuff[1] == 2 && cd != 'b'))
+					continue;
+				
+				vector<int> ip;
+				int length;
+				bool ip_check = true;
+				iss >> length;
+				for (int i=0; i<length; i++) {
+					int t;
+					iss >> t;
+					if(rbuff[4+i] != t)
+					{
+						ip_check = false;
+						break;
+					}
+				}
+				if(!ip_check)
+					continue;
+				
+				if(rule == 'p') // permit
+					break;
+				else {			// reject
+					cerr << "CD ";
+					if(rbuff[1] == 1)
+						cerr << "CONNECT";
+					else {
+						cerr << "BIND";
+					}
+					cerr << " rejected by firewall rules." << endl;
+
+					socks_fail();
+				}
+
+			}
+		}
+		
+		ifs.close();
+	}
+	
 
 	bool c_off = 0, s_off = 0;
 	int s;
